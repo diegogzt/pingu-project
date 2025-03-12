@@ -1,0 +1,578 @@
+/* =================================================
+   ESTILOS DE TARJETAS NFT - EXTRAÍDOS DEL MARKETPLACE
+   ================================================= */
+
+:root {
+    /* Colors */
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+    --background-color: #1F1F1F;
+    --text-color: #ffff;
+    --border-color: #757272c5;
+    --bg-body: #0000;
+    --text-color-secondary: #a8a9aa;
+    --true-color: #2cb32c; /* Color verde */
+    /* Fonts */
+    --pixel: 'Press Start 2P';
+    --width-font-family-press: 0.6rem;
+}
+
+/* ===================================================
+   CONTENEDOR DE TARJETAS
+   =================================================== */
+.marketplace-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 73dvw;
+    justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+    .marketplace-container{
+        width: 100dvw;
+        padding-inline: 30px;
+    }
+}
+
+/* ===================================================
+   ESTILOS BÁSICOS DE TARJETAS
+   =================================================== */
+.card {
+    font-family: var(--pixel);
+    flex: 0 0 25%;
+    width: 25%;
+    max-width: 24%;
+    height: auto;
+    aspect-ratio: 0.7/1;
+    background-color: #f5f5f5;
+    border-radius: 0.8vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 2vh;
+    z-index: 2;
+    border: 2px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-0.5vh);
+}
+
+/* ===================================================
+   ESTILOS ESPECÍFICOS DE RAREZA
+   =================================================== */
+/* Sombras específicas para cada rareza al hacer hover */
+.legendary-card:hover {
+    box-shadow: 0 10px 20px rgba(255, 217, 0, 0.7), 0 0 8px rgba(255, 217, 0, 0.5); /* Sombra dorada para Legendary */
+    transform: translateY(-0.8vh) scale(1.02);
+    z-index: 10;
+}
+
+.mythic-card:hover {
+    box-shadow: 0 10px 20px rgba(148, 0, 211, 0.7), 0 0 8px rgba(148, 0, 211, 0.5); /* Sombra púrpura para Mythic */
+    transform: translateY(-0.8vh) scale(1.02);
+    z-index: 10;
+}
+
+.rare-card:hover {
+    box-shadow: 0 10px 20px rgba(79, 79, 255, 0.7), 0 0 8px rgba(79, 79, 255, 0.5); /* Sombra azul para Rare */
+    transform: translateY(-0.8vh) scale(1.02);
+    z-index: 10;
+}
+
+.common-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 128, 0, 0.7), 0 0 8px rgba(0, 128, 0, 0.5); /* Sombra verde para Common */
+    transform: translateY(-0.8vh) scale(1.02);
+    z-index: 10;
+}
+
+/* Colores para el encabezado según rareza */
+#legendary {
+    color: rgb(255, 217, 0);
+}
+
+#mythic {
+    color: rgb(148, 0, 211);
+}
+
+#rare {
+    color: rgb(79, 79, 255);
+    text-shadow: 0 0 1px rgb(99, 3, 3);
+}
+
+#common2 {
+    color: rgb(0, 128, 0);
+}
+
+/* ===================================================
+   COMPONENTES DE LA TARJETA
+   =================================================== */
+/* Sección de imagen */
+.card-image {
+    flex: 1;
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}
+
+.image {
+    width: 101%;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    width: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sección de información */
+.card-info {
+    background-color: #222;
+    color: white;
+    position: relative;
+    height: 40%;
+}
+
+/* Encabezado de la tarjeta */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6vh;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    z-index: 1;
+    background-color: #000;
+    padding: 0.7vh;
+    padding-inline: 1vw;
+}
+
+.card-id {
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+.card-rarity {
+    font-size: 1vw;
+}
+
+/* Estadísticas de la tarjeta */
+.card-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.7vw;
+    margin: 1vh 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    justify-content: space-between;
+    padding-inline: 1vw;
+}
+
+.stat {
+    display: flex;
+    flex: 1;
+    gap: 0.2vw;
+    font-size: 1vw;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Iconos de estadísticas */
+.heart-icon {
+    color: #ff5555;
+}
+
+.lightning-icon {
+    color: #ffcc00;
+}
+
+.ghost-icon {
+    color: #aaaaff;
+}
+
+.sword-icon {
+    color: #cccccc;
+}
+
+.sword-icon, .ghost-icon, .lightning-icon, .heart-icon {
+    font-size: 0.9vw;
+    margin-bottom: 0.3vw;
+}
+
+/* Precio y moneda */
+.card-number {
+    color: #ffffff;
+    margin-bottom: 1vh;
+    font-weight: bold;
+    margin-top: 1vh;
+    font-size: 1vw;
+    padding-inline: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.currency-icon {
+    width: 1.2vw;
+    height: 1.2vw;
+    object-fit: contain;
+}
+
+/* Botones de acción */
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 1.2vh;
+    padding-inline: 1vw;
+}
+
+.buy-btn {
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+    background: none;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+.add-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4vw;
+    padding: 0.6vh 0.8vw;
+    display: flex;
+    align-items: center;
+    gap: 0.4vw;
+    cursor: pointer;
+    font-size: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN
+   =================================================== */
+@media (max-width: 900px) {
+    .card-actions {
+        display: none;
+    }
+    
+    .card-id {
+        font-size: 0.9vw;
+    }
+
+    .card-rarity {
+        font-size: 0.9vw;
+    }
+
+    .card-stats {
+        font-size: 0.8vw;
+    }
+
+    .card-number {
+        font-size: 1vw;
+    }
+
+    .currency-icon {
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .marketplace-container {
+        justify-content: space-around;
+    }
+    
+    .card-actions {
+        display: flex;
+    }
+    
+    .card {
+        flex: 0 0 35vw;
+        width: 35vw;
+        max-width: 35vw;
+        font-size: 0.8vw;
+    }
+
+    .card-id {
+        font-size: 1.3vw;
+    }
+
+    .card-rarity {
+        font-size: 1.3vw;
+    }
+
+    .card-stats {
+        font-size: 1.3vw;
+    }
+
+    .card-number {
+        font-size: 1.3vw;
+    }
+
+    .buy-btn {
+        font-size: 1.3vw;
+    }
+
+    .add-btn {
+        font-size: 1.3vw;
+    }
+
+    .currency-icon {
+        width: 1.8vw;
+        height: 1.8vw;
+    }
+}
+
+/* ===================================================
+   ESTILOS PARA EL MODO M3
+   =================================================== */
+.m3-style .marketplace-container {
+    justify-content: flex-start;
+    gap: 1.5%;
+}
+
+/* Ajuste de las tarjetas en modo m3 */
+.m3-style .card {
+    font-family: 'Press Start 2P';
+    flex: 0 0 13%;
+    width: 13%;
+    max-width: 13%;
+    height: auto;
+    aspect-ratio: 0.7/1;
+    background-color: #f5f5f5;
+    border-radius: 0.8vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 2vh;
+    z-index: 2;
+}
+
+.m3-style .card:hover {
+    transform: translateY(-0.5vh);
+}
+
+/* Efectos de hover por rareza en modo m3 */
+.m3-style .legendary-card:hover {
+    box-shadow: 0 10px 20px rgba(255, 217, 0, 0.7); /* Sombra dorada para Legendary */
+    transform: translateY(-0.8vh);
+    z-index: 10;
+}
+
+.m3-style .mythic-card:hover {
+    box-shadow: 0 10px 20px rgba(148, 0, 211, 0.7); /* Sombra púrpura para Mythic */
+    transform: translateY(-0.8vh);
+    z-index: 10;
+}
+
+.m3-style .rare-card:hover {
+    box-shadow: 0 10px 20px rgba(79, 79, 255, 0.7); /* Sombra azul para Rare */
+    transform: translateY(-0.8vh);
+    z-index: 10;
+}
+
+.m3-style .common-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 128, 0, 0.7); /* Sombra verde para Common */
+    transform: translateY(-0.8vh);
+    z-index: 10;
+}
+
+/* Componentes de la tarjeta en modo m3 */
+.m3-style .card-image {
+    flex: 1;
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+.m3-style .image {
+    transform: scale(1.2);
+    width: 101%;
+    object-fit: cover;
+}
+
+.m3-style .card-info {
+    background-color: #222;
+    color: white;
+    position: relative;
+    height: 30%;
+}
+
+.m3-style .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    z-index: 1;
+    background-color: #00000000;
+    padding: 1vh;
+    padding-inline: 1vw;
+}
+
+.m3-style .card-id {
+    font-size: 0.7vw;
+}
+
+.m3-style .card-rarity {
+    font-size: 0.7vw;
+}
+
+.m3-style .card-stats {
+    display: none;
+}
+
+.m3-style .stat {
+    display: none;
+}
+
+.m3-style .card-number {
+    color: #ffffff;
+    margin-bottom: 0vh;
+    margin-top: 0vh;
+    font-size: 1vw;
+    padding-inline: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0vh;
+}
+
+.m3-style .card-actions {
+    display: none;
+}
+
+.m3-style .buy-btn {
+    display: none;
+}
+
+.m3-style .add-btn {
+    display: none;
+}
+
+/* Iconos en modo m3 */
+.m3-style .heart-icon {
+    color: #ff5555;
+}
+
+.m3-style .lightning-icon {
+    color: #ffcc00;
+}
+
+.m3-style .ghost-icon {
+    color: #aaaaff;
+}
+
+.m3-style .sword-icon {
+    color: #cccccc;
+}
+
+.m3-style .sword-icon,
+.m3-style .ghost-icon,
+.m3-style .lightning-icon, 
+.m3-style .heart-icon {
+    font-size: 0.9vw;
+    margin-bottom: 0.3vw;
+}
+
+/* Contenedor para el precio y la moneda en modo m3 */
+.m3-style .price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.3vw;
+}
+
+/* Icono de la moneda en modo m3 */
+.m3-style .currency-icon {
+    width: 0.9vw;
+    height: 0.9vw;
+    object-fit: contain;
+}
+
+/* Responsive para m3 */
+@media (max-width: 900px) {
+    .m3-style .card-actions {
+        display: none;
+    }
+    
+    .m3-style .card-id {
+        font-size: 0.9vw;
+    }
+
+    .m3-style .card-rarity {
+        font-size: 0.9vw;
+    }
+
+    .m3-style .card-number {
+        font-size: 1vw;
+    }
+
+    .m3-style .currency-icon {
+        width: 1.2vw;
+        height: 1.2vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .m3-style .marketplace-container {
+        justify-content: space-around;
+    }
+    
+    .m3-style .card-actions {
+        display: flex;
+    }
+    
+    .m3-style .card {
+        flex: 0 0 35vw;
+        width: 35vw;
+        max-width: 35vw;
+        font-size: 0.8vw;
+    }
+
+    .m3-style .card-id {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .card-rarity {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .card-number {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .buy-btn {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .add-btn {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .currency-icon {
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+} 

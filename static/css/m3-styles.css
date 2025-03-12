@@ -1,0 +1,351 @@
+/* Estilos para el modo m3 */
+.m3-style .marketplace-container {
+    justify-content: flex-start;
+    gap: 1.5%;
+}
+
+/* Estilos para las tarjetas en modo m3 */
+.m3-style .card, .m3-card {
+    font-family: 'Press Start 2P';
+    flex: 0 0 13%;
+    width: 13%;
+    max-width: 13%;
+    height: auto;
+    aspect-ratio: 0.7/1;
+    background-color: #f5f5f5;
+    border-radius: 0.8vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 2vh;
+    z-index: 2;
+}
+
+.m3-style .card:hover, .m3-card:hover {
+    transform: translateY(-0.5vh);
+}
+
+/* Sombras específicas para cada rareza en modo m3 */
+.m3-style .legendary-card:hover {
+    box-shadow: 0 10px 20px rgba(255, 217, 0, 0.7); /* Sombra dorada para Legendary */
+    transform: translateY(-0.8vh);
+    z-index: 10;
+}
+
+.m3-style .mythic-card:hover {
+    box-shadow: 0 10px 20px rgba(148, 0, 211, 0.7); /* Sombra púrpura para Mythic */
+    transform: translateY(-0.8vh);
+    z-index: 10;
+}
+
+.m3-style .rare-card:hover {
+    box-shadow: 0 10px 20px rgba(79, 79, 255, 0.7); /* Sombra azul para Rare */
+    transform: translateY(-0.8vh);
+    z-index: 10;
+}
+
+.m3-style .common-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 128, 0, 0.7); /* Sombra verde para Common */
+    transform: translateY(-0.8vh);
+    z-index: 10;
+}
+
+.m3-style .card-image, .m3-card-image {
+    flex: 1;
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+.m3-style .image {
+    transform: scale(1.2);
+    width: 101%;
+    object-fit: cover;
+}
+
+.m3-style .card-info, .m3-card-info {
+    background-color: #222;
+    color: white;
+    position: relative;
+    height: 30%;
+}
+
+.m3-style .card-header, .m3-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    z-index: 1;
+    background-color: #00000000;
+    padding: 1vh;
+    padding-inline: 1vw;
+}
+
+/* Mejorar visibilidad del ID del token en m3 */
+.m3-style .card-id {
+    font-size: 0.8vw;
+    transition: 0.3s;
+}
+
+.m3-style .card:hover .card-id {
+    color: rgb(255, 255, 255);
+    transform: translateY(-2px);
+}
+
+.m3-style .card-rarity {
+    font-size: 0.7vw;
+}
+
+.m3-style .card-stats {
+    display: none;
+}
+
+.m3-style .stat {
+    display: none;
+}
+
+.m3-style .card-number {
+    color: #ffffff;
+    margin-bottom: 0vh;
+    margin-top: 0vh;
+    font-size: 0.8vw;
+    padding-inline: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0vh;
+}
+
+.m3-style .card-actions {
+    display: none;
+}
+
+.m3-style .buy-btn {
+    display: none;
+}
+
+.m3-style .add-btn {
+    display: none;
+}
+
+.m3-style .heart-icon {
+    color: #ff5555;
+}
+
+.m3-style .lightning-icon {
+    color: #ffcc00;
+}
+
+.m3-style .ghost-icon {
+    color: #aaaaff;
+}
+
+.m3-style .sword-icon {
+    color: #cccccc;
+}
+
+
+/* Contenedor para el precio y la moneda en modo m3 */
+.m3-style .price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.3vw;
+}
+
+/* Icono de la moneda en modo m3 */
+.m3-style .currency-icon {
+    width: 0.9vw;
+    height: 0.9vw;
+    object-fit: contain;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 900px) {
+    .m3-style .card-actions {
+        display: none;
+    }
+    
+    .m3-style .body {
+        background-color: transparent;
+    }
+    
+    .m3-style .card-id {
+        font-size: 0.9vw;
+    }
+
+    .m3-style .card-rarity {
+        font-size: 0.9vw;
+    }
+
+    .m3-style .card-stats {
+        font-size: 0.8vw;
+    }
+
+    .m3-style .card-number {
+        font-size: 1vw;
+    }
+
+    .m3-style .currency-icon {
+        width: 1.2vw;
+        height: 1.2vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .m3-style .marketplace-container {
+        justify-content: space-around;
+    }
+    
+    .m3-style .card-actions {
+        display: flex;
+    }
+    
+    .m3-style .card {
+        flex: 0 0 35vw;
+        width: 35vw;
+        max-width: 35vw;
+        font-size: 0.8vw;
+    }
+
+    .m3-style .card-id {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .card-rarity {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .card-stats {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .card-number {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .buy-btn {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .add-btn {
+        font-size: 1.3vw;
+    }
+
+    .m3-style .currency-icon {
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+}
+
+
+/* Media queries para responsive en m3 */
+@media (max-width: 900px) {
+    .m3-style .details-search input {
+        padding: 12px 15px 12px 40px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .m3-style .details-search input {
+        padding: 10px 12px 10px 35px;
+        font-size: 0.65rem;
+        border-radius: 8px;
+    }
+    
+    .m3-style .details-search input::placeholder {
+        font-size: 0.5rem;
+        font-size: calc(0.7vw + 0.1rem);
+    }
+}
+
+/* Estilos adicionales para la barra de búsqueda en m3 */
+.m3-style .details-search.active {
+    z-index: 10;
+}
+
+.m3-style .details-search.active input {
+    border-color: rgba(120, 120, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(100, 100, 255, 0.25), 
+                0 6px 15px rgba(0, 0, 0, 0.3),
+                inset 0 0 15px rgba(120, 120, 255, 0.15);
+    background-color: rgba(60, 60, 120, 0.5);
+}
+
+/* Estilos para el resaltado de la tarjeta en m3 */
+.m3-style .highlighted-card {
+    animation: m3-highlight 2s ease;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes m3-highlight {
+    0% {
+        box-shadow: 0 0 10px 2px rgba(100, 140, 255, 0.7);
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        box-shadow: 0 0 30px 10px rgba(120, 160, 255, 0.9),
+                    0 0 60px 20px rgba(80, 120, 255, 0.5);
+        transform: translateY(-12px) scale(1.05);
+    }
+    100% {
+        box-shadow: 0 0 10px 2px rgba(100, 140, 255, 0.7);
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Personalización del carrito para el estilo m3 */
+.m3-style .cart-animation-container {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.m3-style .cart-icon {
+    background-color: rgba(20, 20, 50, 0.9);
+    width: 90px;
+    height: 90px;
+    box-shadow: 0 0 60px rgba(120, 120, 255, 0.5),
+                0 0 20px rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+}
+
+.m3-style .cart-icon::before {
+    content: '🛒';
+    font-size: 45px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.m3-style .cart-success-message {
+    font-family: 'Press Start 2P';
+    font-size: 0.65rem;
+    bottom: -35px;
+    text-shadow: 0 0 8px rgba(100, 100, 255, 0.8),
+                 0 2px 4px rgba(0, 0, 0, 0.5);
+    color: #ccccff;
+}
+
+.m3-style .particle {
+    box-shadow: 0 0 8px currentColor;
+}
+
+/* Media queries para el estilo m3 */
+@media (max-width: 600px) {
+    .m3-style .cart-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .m3-style .cart-icon::before {
+        font-size: 35px;
+    }
+    
+    .m3-style .cart-success-message {
+        font-size: 0.5rem;
+    }
+} 

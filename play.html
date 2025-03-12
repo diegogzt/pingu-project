@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Game - Pingu Game</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <link rel="stylesheet" href="static/css/play.css">
+    <link rel="stylesheet" href="static/css/nft-menu.css">
+    <link rel="stylesheet" href="static/css/select-button.css">
+    <link rel="stylesheet" href="static/css/card-styles.css">
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" id="link-index">
+            <img src="static/img/doge-logo.png" alt="doge logo" class="logo">
+            <div class="logo-and-tittle">
+                <h1 class="tittle">Doge coin</h1>
+            </div>
+        </a>
+        <div class="container-menu">
+            <nav class="nav-menu" id="nav-menu">
+                <a href="play.html" class="button button-text play">
+                    PLAY
+                </a>
+                <a href="marketplace.html" class="button button-text">
+                    MARKETPLACE
+                </a>
+                <a href="museum.html" class="button button-text">
+                    MUSEUM
+                </a>
+                <div class="container-buttons-links">
+    
+                    <a href="cart.html" class="button button-link">
+                        <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+                    </a>
+                    <a href="settings.html" class="button button-link">
+                        <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+                    </a>
+                    <a href="wallet.html" class="button button-link car">
+                        <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+                    </a>
+    
+                </div>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuToggle = document.getElementById('menu-toggle');
+                const navMenu = document.getElementById('nav-menu');
+                
+                // Abrir/cerrar menú al hacer clic en el botón
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Efecto de pulsación
+                    this.classList.add('pressed');
+                    setTimeout(() => {
+                        this.classList.remove('pressed');
+                    }, 150);
+                    
+                    // Toggle del menú con pequeño retraso para efecto visual
+                    setTimeout(() => {
+                        this.classList.toggle('active');
+                        navMenu.classList.toggle('active');
+                        
+                        // Bloquear/desbloquear desplazamiento del body
+                        if (navMenu.classList.contains('active')) {
+                            document.body.style.overflow = 'hidden';
+                            // Asegurar visibilidad al abrir
+                            setTimeout(function() {
+                                navMenu.style.visibility = 'visible';
+                            }, 10);
+                        } else {
+                            document.body.style.overflow = '';
+                            // Retrasar el cambio de visibilidad hasta que termine la animación
+                            setTimeout(function() {
+                                navMenu.style.visibility = 'hidden';
+                            }, 400); // tiempo igual a la duración de la transición
+                        }
+                    }, 100);
+                });
+                
+                // Cerrar menú al hacer clic en un enlace
+                const navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        // Retrasar el cambio de visibilidad hasta que termine la animación
+                        setTimeout(function() {
+                            navMenu.style.visibility = 'hidden';
+                        }, 400);
+                    });
+                });
+                
+                // Cerrar menú al hacer clic fuera del menú
+                document.addEventListener('click', function(e) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(e.target) && 
+                        !menuToggle.contains(e.target)) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        // Retrasar el cambio de visibilidad hasta que termine la animación
+                        setTimeout(function() {
+                            navMenu.style.visibility = 'hidden';
+                        }, 400);
+                    }
+                });
+                
+                // Cerrar menú con la tecla Escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        // Retrasar el cambio de visibilidad hasta que termine la animación
+                        setTimeout(function() {
+                            navMenu.style.visibility = 'hidden';
+                        }, 400);
+                    }
+                });
+                
+                // Efecto hover en botones
+                const buttons = navMenu.querySelectorAll('.button, a');
+                buttons.forEach(button => {
+                    button.addEventListener('mouseenter', function() {
+                        if (navMenu.classList.contains('active')) {
+                            this.style.transform = 'translateY(-2px)';
+                            this.style.boxShadow = '4px 6px 0 #000';
+                        }
+                    });
+                    
+                    button.addEventListener('mouseleave', function() {
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                    });
+                });
+            });
+        </script>
+    
+        <div class="links">
+            <a href="play.html" class="button button-text play">
+                PLAY
+            </a>
+            <a href="marketplace.html" class="button button-text">
+                MARKETPLACE
+            </a>
+            <a href="museum.html" class="button button-text">
+                MUSEUM
+            </a>
+            <a href="cart.html" class="button button-link">
+                <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+            </a>
+            <a href="settings.html" class="button button-link">
+                <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+            </a>
+            <a href="wallet.html" class="button button-link car">
+                <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+            </a>
+        </div>
+    </header>
+
+
+    
+    <div class="container-main">
+
+
+    
+    <!-- Contenido principal -->
+    <main class="game-container">
+        <div class="gameboy">
+            <div class="front-plate">
+                <div class="front-plate-head">
+                    <div class="vertical-stripe"></div>
+                    <div class="vertical-stripe"></div>
+                    <div class="vertical-stripe"></div>
+
+                    <div class="vertical-gouge vertical-gouge-1"></div>
+                    <div class="vertical-gouge vertical-gouge-2"></div>
+
+                    <div class="on-off">
+                        <div class="spike spike-left">
+                            <div></div>
+                        </div>
+                        <div class="spike spike-right">
+                            <div></div>
+                        </div>
+                        <span>
+                            OFF
+                            <i></i>
+                            ON
+                        </span>
+                    </div>
+                </div>
+
+                <div class="screen-container">
+                    <div class="screen-headline">
+                        <span>DOT MATRIX WITH STEREO SOUND</span>
+                    </div>
+
+                    <div class="battery-light">
+                        <span>BATTERY</span>
+                    </div>
+
+                    <div class="screen">
+                        <!-- Contenido del juego/imagen -->
+                        <img src="static/img/penguin-game.png" alt="Penguin Game" class="game-image">
+                        <div class="game-text"><Texto hasta aquí></div>
+                    </div>
+                </div>
+
+                <div class="logo">PINGU</div>
+
+                <div id="controller">
+                    <div class="buttons-a-b">
+                        <div class="button-b" id="btn-b"></div>
+                        <div class="button-a" id="btn-a"></div>
+                    </div>
+
+                    <div class="start" id="btn-start">
+                        <div></div>
+                    </div>
+
+                    <div class="select" id="btn-select">
+                        <div class="select-text"></div>
+                    </div>
+
+                    <div class="cross-container">
+                        <div class="spike">
+                            <div></div>
+                        </div>
+                        <div class="spike">
+                            <div></div>
+                        </div>
+                        <div class="spike">
+                            <div></div>
+                        </div>
+                        <div class="spike">
+                            <div></div>
+                        </div>
+
+                        <div class="cross">
+                            <div class="top-down">
+                                <div class="button-top" id="btn-up">
+                                    <div class="button-stripe"></div>
+                                    <div class="button-stripe"></div>
+                                    <div class="button-stripe"></div>
+                                </div>
+                                <div class="button-bottom" id="btn-down">
+                                    <div class="button-stripe"></div>
+                                    <div class="button-stripe"></div>
+                                    <div class="button-stripe"></div>
+                                </div>
+                            </div>
+
+                            <div class="left-right">
+                                <div class="button-left" id="btn-left">
+                                    <div class="button-stripe"></div>
+                                    <div class="button-stripe"></div>
+                                    <div class="button-stripe"></div>
+                                </div>
+                                <div class="button-right" id="btn-right">
+                                    <div class="button-stripe"></div>
+                                    <div class="button-stripe"></div>
+                                    <div class="button-stripe"></div>
+                                </div>
+                            </div>
+                            <div class="cross-middle-bumb"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker">
+                    <div>
+                        <div class="speaker-inner-shadow"></div>
+                    </div>
+                    <div>
+                        <div class="speaker-inner-shadow"></div>
+                    </div>
+                    <div>
+                        <div class="speaker-inner-shadow"></div>
+                    </div>
+                    <div>
+                        <div class="speaker-inner-shadow"></div>
+                    </div>
+                    <div>
+                        <div class="speaker-inner-shadow"></div>
+                    </div>
+                    <div>
+                        <div class="speaker-inner-shadow"></div>
+                    </div>
+                </div>
+
+                <div class="phones">
+                    <div class="vertical-stripe"></div>
+                    <div class="vertical-stripe"></div>
+                    <div class="vertical-stripe"></div>
+                    <i></i>
+                    <span>PHONES</span>
+                </div>
+            </div>
+
+            <div class="power-button">
+                <div></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Menú NFT -->
+    <div class="nft-menu" id="nft-menu">
+        <div class="nft-menu-header">
+            <div class="ttile-nft">
+                <h2 class="nft-menu-title">Pengus Cards</h2>
+                <h3 class="nft-menu-subtitle">¿QUIÉN ES EL ELEGIDO DE HOY?</h3>
+            </div>
+            <!-- Botón para cerrar el menú -->
+             <!-- <div class="container-button">
+                 <button id="close-nft-menu" class="close-menu-btn">
+                     <i class="fas fa-times"></i> Volver al juego
+                    </button>
+                </div> -->
+        </div>
+        <div class="nft-menu-content">
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <h2 class="sidebar-title">Chose your NFT</h2>
+                    
+                    <div class="sidebar-search">
+                        <input type="text" class="search-input" placeholder="Search...">
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="section-title">Rarity</h3>
+                        <div class="rarity-options">
+                            <label class="rarity-option legendary">
+                                <span>Legendary</span>
+                                <input type="checkbox" class="checkbox">
+                            </label>
+                            <label class="rarity-option mythic">
+                                <span>Mythic</span>
+                                <input type="checkbox" class="checkbox">
+                            </label>
+                            <label class="rarity-option rare">
+                                <span>Rare</span>
+                                <input type="checkbox" class="checkbox">
+                            </label>
+                            <label class="rarity-option common">
+                                <span>Common</span>
+                                <input type="checkbox" class="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="section-title">Available</h3>
+                        <div class="available-options">
+                            <label class="available-option">
+                                <span>NO</span>
+                                <div class="square-checkbox"></div>
+                            </label>
+                            <label class="available-option">
+                                <span>YES</span>
+                                <div class="square-checkbox"></div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-button">
+                        <button class="reload-button">RECARGAR TODO</button>
+                    </div>
+                </div>
+            </div>
+            <div id="nft-cards-container" class="marketplace-container"></div>
+        </div>
+    </div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-nav">
+                <a href="play.html" class="footer-link">PLAY</a>
+                <span class="footer-separator">|</span>
+                <a href="marketplace.html" class="footer-link">MARKETPLACE</a>
+                <span class="footer-separator">|</span>
+                <a href="museum.html" class="footer-link">MUSEUM</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link">SUPPORT</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Pingu Game. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="static/js/script.js"></script>
+    <script src="static/js/play.js"></script>
+    <script src="static/js/cardGenerator.js"></script>
+    <script src="static/js/nftContainerLoader.js"></script>
+</body>
+
+</html>

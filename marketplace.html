@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <link rel="stylesheet" href="static/css/marketplace.css">
+    <link rel="stylesheet" href="static/css/m2.css">
+    <link rel="stylesheet" href="static/css/m3-styles.css">
+        <!-- FUENTES DE GOOGLE -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <!---------------------------------------------------------------->
+
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/c704d5f021.js" crossorigin="anonymous"></script>
+        <header>
+            <a href="index.html" id="link-index">
+                <img src="static/img/doge-logo.png" alt="doge logo" class="logo">
+                <div class="logo-and-tittle">
+                    <h1 class="tittle">Doge coin</h1>
+                </div>
+            </a>
+            <div class="container-menu">
+                <nav class="nav-menu" id="nav-menu">
+                    <div class="container-header-left">
+                        <a href="play.html" class="button button-text play">
+                            PLAY
+                        </a>
+                        <a href="marketplace.html" class="button button-text">
+                            MARKETPLACE
+                        </a>
+                        <a href="museum.html" class="button button-text">
+                            MUSEUM
+                        </a>
+                    </div>
+                    <div class="container-buttons-links">
+        
+                        <a href="cart.html" class="button button-link">
+                            <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+                        </a>
+                        <a href="settings.html" class="button button-link">
+                            <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+                        </a>
+                        <a href="wallet.html" class="button button-link car">
+                            <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+                        </a>
+        
+                    </div>
+                </nav>
+                <div class="menu-toggle" id="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        
+            <script>
+                document.getElementById('menu-toggle').addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    document.getElementById('nav-menu').classList.toggle('active');
+                });
+            </script>
+        
+            <div class="links">
+                <a href="play.html" class="button button-text play">
+                    PLAY
+                </a>
+                <a href="marketplace.html" class="button button-text">
+                    MARKETPLACE
+                </a>
+                <a href="museum.html" class="button button-text">
+                    MUSEUM
+                </a>
+                <a href="cart.html" class="button button-link">
+                    <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+                </a>
+                <a href="settings.html" class="button button-link">
+                    <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+                </a>
+                <a href="wallet.html" class="button button-link car">
+                    <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+                </a>
+            </div>
+        </header>
+        
+        <!-- FIN DEL HEADER -->
+
+        <div class="collection-header">
+            <div class="right">
+
+                <div class="collection-info">
+                    <h1 class="title-of-collection-header">
+                        LIL PUDGYS
+                    </h1>
+                    <div class="container-change-collection">
+                        <select class="change-collection" title="Change Collection " placeholder="Change Collection">
+                            <option class="option-disabled" disabled selected>Change Collection</option>
+                            <option value="lil-pudgys">Lil Pudgys (ETH)</option>
+                        <option value="cool-cats">Cool Cats (ETH)</option>
+                        <option value="bored-apes">Bored Apes (ETH)</option>
+                            <option value="crypto-punks">Crypto Punks (ETH)</option>
+                        </select>            
+                    </div>
+                </div>
+            </div>
+            <div class="collection-stats">
+                <div class="stat-header stat-floor">
+                    <span class="label">FLOOR</span>
+                    <span class="value value-floor">0.93 
+                        <svg class="icon-coin no-margin" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="auto" viewBox="0 0 50 50">
+                            <path
+                                d="M 25.984375 0.98632812 A 1.0001 1.0001 0 0 0 25.099609 1.5527344 L 11.169922 23.443359 A 1.0009551 1.0009551 0 0 0 11.107422 23.548828 A 1.0009551 1.0009551 0 0 0 11.105469 23.550781 A 1.0001 1.0001 0 0 0 11.066406 23.640625 A 1.0009551 1.0009551 0 0 0 11.013672 23.833984 A 1.0001 1.0001 0 0 0 11 24.033203 A 1.0009551 1.0009551 0 0 0 11 24.035156 A 1.0001 1.0001 0 0 0 11.007812 24.132812 A 1.0009551 1.0009551 0 0 0 11.011719 24.152344 A 1.0001 1.0001 0 0 0 11.046875 24.298828 A 1.0001 1.0001 0 0 0 11.054688 24.326172 A 1.0009551 1.0009551 0 0 0 11.054688 24.328125 A 1.0001 1.0001 0 0 0 11.091797 24.419922 A 1.0009551 1.0009551 0 0 0 11.091797 24.421875 A 1.0001 1.0001 0 0 0 11.138672 24.507812 A 1.0009551 1.0009551 0 0 0 11.138672 24.509766 A 1.0001 1.0001 0 0 0 11.193359 24.591797 A 1.0009551 1.0009551 0 0 0 11.222656 24.626953 A 1.0001 1.0001 0 0 0 11.257812 24.669922 A 1.0001 1.0001 0 0 0 11.326172 24.740234 A 1.0009551 1.0009551 0 0 0 11.328125 24.742188 A 1.0009551 1.0009551 0 0 0 11.486328 24.859375 A 1.0009551 1.0009551 0 0 0 11.488281 24.861328 A 1.0001 1.0001 0 0 0 11.503906 24.869141 A 1.0009551 1.0009551 0 0 0 11.505859 24.871094 L 25.378906 32.798828 A 1.0001 1.0001 0 0 0 26.613281 32.802734 L 40.474609 24.880859 A 1.0009551 1.0009551 0 0 0 40.496094 24.869141 A 1.0001 1.0001 0 0 0 40.560547 24.828125 A 1.0009551 1.0009551 0 0 0 40.580078 24.814453 A 1.0001 1.0001 0 0 0 40.59375 24.802734 A 1.0009551 1.0009551 0 0 0 40.654297 24.757812 A 1.0009551 1.0009551 0 0 0 40.658203 24.753906 A 1.0001 1.0001 0 0 0 40.669922 24.744141 A 1.0009551 1.0009551 0 0 0 40.730469 24.683594 A 1.0009551 1.0009551 0 0 0 40.794922 24.607422 A 1.0009551 1.0009551 0 0 0 40.849609 24.527344 A 1.0009551 1.0009551 0 0 0 40.851562 24.525391 A 1.0001 1.0001 0 0 0 40.853516 24.519531 A 1.0009551 1.0009551 0 0 0 40.900391 24.439453 A 1.0009551 1.0009551 0 0 0 40.900391 24.4375 A 1.0001 1.0001 0 0 0 40.931641 24.367188 A 1.0009551 1.0009551 0 0 0 40.939453 24.345703 A 1.0001 1.0001 0 0 0 40.947266 24.322266 A 1.0009551 1.0009551 0 0 0 40.966797 24.253906 A 1.0009551 1.0009551 0 0 0 40.96875 24.25 A 1.0001 1.0001 0 0 0 40.970703 24.244141 A 1.0009551 1.0009551 0 0 0 40.988281 24.152344 A 1.0001 1.0001 0 0 0 40.998047 24.076172 A 1.0009551 1.0009551 0 0 0 40.998047 24.068359 A 1.0001 1.0001 0 0 0 41 23.976562 A 1.0001 1.0001 0 0 0 40.996094 23.917969 A 1.0009551 1.0009551 0 0 0 40.990234 23.855469 A 1.0009551 1.0009551 0 0 0 40.990234 23.853516 A 1.0001 1.0001 0 0 0 40.988281 23.84375 A 1.0009551 1.0009551 0 0 0 40.970703 23.759766 A 1.0009551 1.0009551 0 0 0 40.970703 23.755859 A 1.0001 1.0001 0 0 0 40.949219 23.681641 A 1.0009551 1.0009551 0 0 0 40.941406 23.660156 A 1.0001 1.0001 0 0 0 40.931641 23.636719 A 1.0009551 1.0009551 0 0 0 40.904297 23.570312 A 1.0009551 1.0009551 0 0 0 40.902344 23.568359 A 1.0001 1.0001 0 0 0 40.900391 23.5625 A 1.0009551 1.0009551 0 0 0 40.853516 23.480469 A 1.0001 1.0001 0 0 0 40.847656 23.470703 A 1.0009551 1.0009551 0 0 0 40.84375 23.462891 L 40.8125 23.416016 L 26.896484 1.546875 A 1.0001 1.0001 0 0 0 25.984375 0.98632812 z M 25 5.4355469 L 25 17.339844 L 14.583984 21.802734 L 25 5.4355469 z M 27 5.4355469 L 37.416016 21.802734 L 27 17.339844 L 27 5.4355469 z M 25 19.515625 L 25 30.275391 L 14.242188 24.128906 L 25 19.515625 z M 27 19.515625 L 37.757812 24.128906 L 27 30.275391 L 27 19.515625 z M 40.007812 27.998047 A 1.0001 1.0001 0 0 0 39.503906 28.130859 L 26 35.847656 L 12.496094 28.130859 A 1.0001 1.0001 0 0 0 12.019531 28 A 1.0001 1.0001 0 0 0 11.195312 29.59375 L 25.128906 48.503906 A 1.0001 1.0001 0 0 0 26.869141 48.505859 L 40.804688 29.59375 A 1.0001 1.0001 0 0 0 40.007812 27.998047 z M 15.613281 32.216797 L 25 37.582031 L 25 44.957031 L 15.613281 32.216797 z M 36.386719 32.216797 L 27 44.957031 L 27 37.582031 L 36.386719 32.216797 z">
+                            </path>
+                        </svg>
+                        <span class="percentage">+1.41%</span>
+                    </span>
+                </div>
+                <div class="label-separetor"></div>
+                <div class=" stat-header">
+                    <span class="label">ITEMS</span>
+                    <span class="value">21,902</span>
+                </div>
+                <div class="label-separetor"></div>
+                <div class="stat-header">
+                    <span class="label">OWNERS</span>
+                    <span class="value">9,791</span>
+                </div>
+            </div>
+            <div class="left">
+                <div class="l1">
+
+                    <div class="stat-header stat-left">
+                        <span class="label label-left">MARKET CAP</span>
+                        <span class="value value-left">$42.6m</span>
+                    </div>
+                </div>
+                <div class="l1">
+                    <div class="stat-header stat-left">
+                        <span class="label label-left">HIGHEST OFFER</span>
+                        <span class="value value-left">0.9
+                            <svg class="icon-coin icon-coin-left" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="auto"
+                            viewBox="0 0 50 50">
+                            <path
+                            d="M 25.984375 0.98632812 A 1.0001 1.0001 0 0 0 25.099609 1.5527344 L 11.169922 23.443359 A 1.0009551 1.0009551 0 0 0 11.107422 23.548828 A 1.0009551 1.0009551 0 0 0 11.105469 23.550781 A 1.0001 1.0001 0 0 0 11.066406 23.640625 A 1.0009551 1.0009551 0 0 0 11.013672 23.833984 A 1.0001 1.0001 0 0 0 11 24.033203 A 1.0009551 1.0009551 0 0 0 11 24.035156 A 1.0001 1.0001 0 0 0 11.007812 24.132812 A 1.0009551 1.0009551 0 0 0 11.011719 24.152344 A 1.0001 1.0001 0 0 0 11.046875 24.298828 A 1.0001 1.0001 0 0 0 11.054688 24.326172 A 1.0009551 1.0009551 0 0 0 11.054688 24.328125 A 1.0001 1.0001 0 0 0 11.091797 24.419922 A 1.0009551 1.0009551 0 0 0 11.091797 24.421875 A 1.0001 1.0001 0 0 0 11.138672 24.507812 A 1.0009551 1.0009551 0 0 0 11.138672 24.509766 A 1.0001 1.0001 0 0 0 11.193359 24.591797 A 1.0009551 1.0009551 0 0 0 11.222656 24.626953 A 1.0001 1.0001 0 0 0 11.257812 24.669922 A 1.0001 1.0001 0 0 0 11.326172 24.740234 A 1.0009551 1.0009551 0 0 0 11.328125 24.742188 A 1.0009551 1.0009551 0 0 0 11.486328 24.859375 A 1.0009551 1.0009551 0 0 0 11.488281 24.861328 A 1.0001 1.0001 0 0 0 11.503906 24.869141 A 1.0009551 1.0009551 0 0 0 11.505859 24.871094 L 25.378906 32.798828 A 1.0001 1.0001 0 0 0 26.613281 32.802734 L 40.474609 24.880859 A 1.0009551 1.0009551 0 0 0 40.496094 24.869141 A 1.0001 1.0001 0 0 0 40.560547 24.828125 A 1.0009551 1.0009551 0 0 0 40.580078 24.814453 A 1.0001 1.0001 0 0 0 40.59375 24.802734 A 1.0009551 1.0009551 0 0 0 40.654297 24.757812 A 1.0009551 1.0009551 0 0 0 40.658203 24.753906 A 1.0001 1.0001 0 0 0 40.669922 24.744141 A 1.0009551 1.0009551 0 0 0 40.730469 24.683594 A 1.0009551 1.0009551 0 0 0 40.794922 24.607422 A 1.0009551 1.0009551 0 0 0 40.849609 24.527344 A 1.0009551 1.0009551 0 0 0 40.851562 24.525391 A 1.0001 1.0001 0 0 0 40.853516 24.519531 A 1.0009551 1.0009551 0 0 0 40.900391 24.439453 A 1.0009551 1.0009551 0 0 0 40.900391 24.4375 A 1.0001 1.0001 0 0 0 40.931641 24.367188 A 1.0009551 1.0009551 0 0 0 40.939453 24.345703 A 1.0001 1.0001 0 0 0 40.947266 24.322266 A 1.0009551 1.0009551 0 0 0 40.966797 24.253906 A 1.0009551 1.0009551 0 0 0 40.96875 24.25 A 1.0001 1.0001 0 0 0 40.970703 24.244141 A 1.0009551 1.0009551 0 0 0 40.988281 24.152344 A 1.0001 1.0001 0 0 0 40.998047 24.076172 A 1.0009551 1.0009551 0 0 0 40.998047 24.068359 A 1.0001 1.0001 0 0 0 41 23.976562 A 1.0001 1.0001 0 0 0 40.996094 23.917969 A 1.0009551 1.0009551 0 0 0 40.990234 23.855469 A 1.0009551 1.0009551 0 0 0 40.990234 23.853516 A 1.0001 1.0001 0 0 0 40.988281 23.84375 A 1.0009551 1.0009551 0 0 0 40.970703 23.759766 A 1.0009551 1.0009551 0 0 0 40.970703 23.755859 A 1.0001 1.0001 0 0 0 40.949219 23.681641 A 1.0009551 1.0009551 0 0 0 40.941406 23.660156 A 1.0001 1.0001 0 0 0 40.931641 23.636719 A 1.0009551 1.0009551 0 0 0 40.904297 23.570312 A 1.0009551 1.0009551 0 0 0 40.902344 23.568359 A 1.0001 1.0001 0 0 0 40.900391 23.5625 A 1.0009551 1.0009551 0 0 0 40.853516 23.480469 A 1.0001 1.0001 0 0 0 40.847656 23.470703 A 1.0009551 1.0009551 0 0 0 40.84375 23.462891 L 40.8125 23.416016 L 26.896484 1.546875 A 1.0001 1.0001 0 0 0 25.984375 0.98632812 z M 25 5.4355469 L 25 17.339844 L 14.583984 21.802734 L 25 5.4355469 z M 27 5.4355469 L 37.416016 21.802734 L 27 17.339844 L 27 5.4355469 z M 25 19.515625 L 25 30.275391 L 14.242188 24.128906 L 25 19.515625 z M 27 19.515625 L 37.757812 24.128906 L 27 30.275391 L 27 19.515625 z M 40.007812 27.998047 A 1.0001 1.0001 0 0 0 39.503906 28.130859 L 26 35.847656 L 12.496094 28.130859 A 1.0001 1.0001 0 0 0 12.019531 28 A 1.0001 1.0001 0 0 0 11.195312 29.59375 L 25.128906 48.503906 A 1.0001 1.0001 0 0 0 26.869141 48.505859 L 40.804688 29.59375 A 1.0001 1.0001 0 0 0 40.007812 27.998047 z M 15.613281 32.216797 L 25 37.582031 L 25 44.957031 L 15.613281 32.216797 z M 36.386719 32.216797 L 27 44.957031 L 27 37.582031 L 36.386719 32.216797 z">
+                            </path>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        
+        <div class="container-selection-section">
+                <div class="selection-section">
+                    <label class="label-grid1" for="grid1">
+                        <input type="radio" id="grid1" name="grid" checked>
+                        <img class="invert-true" src="static/img/png_ctt71.png" id="two-icon-1" alt="Grid 1">
+                        <span class="label-grid1">Items</span>
+                    </label>
+                    <label class="label-grid2" for="grid2">
+                        <input type="radio" id="grid2" name="grid">
+                        <img class="invert-true" src="static/img/png_ctt71.png" id="two-icon-2" alt="Grid 2">
+                        <span class="label-grid2">Activity</span>
+                    </label>
+                </div>
+        </div>
+            
+
+            
+            
+            <button class="sidebar-show-medium">filters</button>
+        <div class="container-sidebar-container">
+            <div class="medium-sidebar-filters">
+                    <div class="sidebar-medium">
+                        <div class="tittle-sidebar">
+                            <h2 class="title-all-filters">Filterss</h2>
+                        </div>
+                        <div class="sidebar-sections said">
+                            <div class="section">
+                                <div class="section-content">
+                                    <label for="price-range" class="section-title">Price Range</label>
+                                    <div class="containter-price">
+                                        <input type="text" id="price-range" class="input-price" placeholder="Min">
+                                        <p id="to">to</p>
+                                        <input type="text" id="price-range-max" class="input-price" placeholder="Max">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section section-category">
+                                <h2 class="section-title" id="category">Category</h2>
+                                <div class="section-content">
+                                    <label class="label-category" id="pp0">PP0<input class="input-category" type="checkbox"></label>
+                                    <label class="label-category" id="pp1">PP1<input class="input-category" type="checkbox"></label>
+                                    <label class="label-category" id="pp2">PP2<input class="input-category" type="checkbox"></label>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <h2 class="section-title" id="rarity">Rarity</h2>
+                                <div class="section-content">
+                                    <label id="legendary" class="label-category">
+                                        Legendary
+                                        <input type="checkbox" class="input-category">
+                                    </label>
+                                    <label id="mythic" class="label-category">
+                                        Mythic
+                                        <input type="checkbox" class="input-category">
+                                    </label>
+                                    <label id="rare" class="label-category">
+                                        Rare
+                                        <input type="checkbox" class="input-category">
+                                    </label>
+                                    <label id="common" class="label-category">
+                                        Common
+                                        <input type="checkbox" class="input-category" id="common-2">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <h2 class="section-title">Stats</h2>
+                                <div class="section-content">
+                                    <label class="label-category icons"><img src="static/img/shield.png" alt="heart"
+                                            class="icon-stats"></label>
+                                    <label class="label-category icons"><img src="static/img/energy.png" alt="lightning"
+                                            class="icon-stats"></label>
+                                    <label class="label-category icons"><img src="static/img/life.png" alt="sword"
+                                            class="icon-stats"></label>
+                                    <label class="label-category icons" id="xd"><img src="static/img/X.png" alt="sword"
+                                            class="icon-stats"></label>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <h2 class="section-title properties ">Properties</h2>
+                                <div class="section-content xd">
+                                    <details>
+                                        <summary class="label-category xd noborder">Background </summary>
+                                        <label class="label-category label-sumary noborder">diego <input type="checkbox"
+                                                class="input-category"></label>
+                                    </details>
+                                    <details>
+                                        <summary class="label-category noborder">Mouth </summary>
+                                        <label class="label-category label-sumary noborder">hola <input type="checkbox"
+                                                class="input-category"></label>
+                                    </details>
+                                    <details>
+                                        <summary class="label-category noborder">Eyes </summary>
+                                        <label class="label-category label-sumary noborder">xd <input type="checkbox"
+                                                class="input-category"></label>
+                                    </details>
+                                    <details>
+                                        <summary class="label-category noborder">Head </summary>
+                                        <label class="label-category label-sumary noborder">Head <input type="checkbox"
+                                                class="input-category"></label>
+                                    </details>
+                                    <details>
+                                        <summary class="label-category noborder">Shirt </summary>
+                                        <label class="label-category label-sumary noborder">Shirt <input type="checkbox"
+                                                class="input-category"></label>
+                                    </details>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="search-and-filter-medium">
+                <div class="container-search-adn-filter-medium-part-up">
+                    <div class="grid-btn-container">
+                        <button class="grid-btn active" data-columns="1" title="Vista de cuadrícula 1">
+                            <svg class="svg-btn btn-grid-1" width="40" height="auto" viewBox="0 0 40 40"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.8611 12H14.2227C13.1181 12 12.2227 12.8954 12.2227 14V16.7315C12.2227 17.8361 13.1181 18.7315 14.2227 18.7315H16.8611C17.9657 18.7315 18.8611 17.836 18.8611 16.7315V14C18.8611 12.8954 17.9657 12 16.8611 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M26.0017 12H23.3633C22.2587 12 21.3633 12.8954 21.3633 14V16.7315C21.3633 17.8361 22.2587 18.7315 23.3633 18.7315H26.0017C27.1063 18.7315 28.0017 17.836 28.0017 16.7315V14C28.0017 12.8954 27.1063 12 26.0017 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M16.6385 21.2686H14C12.8954 21.2686 12 22.164 12 23.2686V26C12 27.1046 12.8954 28 14 28H16.6385C17.743 28 18.6385 27.1046 18.6385 26V23.2686C18.6385 22.164 17.743 21.2686 16.6385 21.2686Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M25.7752 21.2686H23.1367C22.0321 21.2686 21.1367 22.164 21.1367 23.2686V26C21.1367 27.1046 22.0322 28 23.1367 28H25.7752C26.8798 28 27.7752 27.1046 27.7752 26V23.2686C27.7752 22.164 26.8798 21.2686 25.7752 21.2686Z"
+                                    fill="#FFFF"></path>
+                            </svg>
+                        </button>
+            
+                        <button class="grid-btn" data-columns="2" title="Vista de cuadrícula 2">
+                            <svg class="svg-btn btn-grid-2" width="40" height="auto" viewBox="0 0 40 40"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.479 18.0089H13.5C12.6716 18.0089 12 18.6805 12 19.5089V20.4879C12 21.3163 12.6716 21.9879 13.5 21.9879H14.479C15.3074 21.9879 15.979 21.3163 15.979 20.4879V19.5089C15.979 18.6805 15.3074 18.0089 14.479 18.0089Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M14.479 24.021H13.5C12.6716 24.021 12 24.6926 12 25.521V26.5C12 27.3284 12.6716 28 13.5 28H14.479C15.3074 28 15.979 27.3284 15.979 26.5V25.521C15.979 24.6926 15.3074 24.021 14.479 24.021Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M14.479 12H13.5C12.6716 12 12 12.6716 12 13.5V14.479C12 15.3074 12.6716 15.979 13.5 15.979H14.479C15.3074 15.979 15.979 15.3074 15.979 14.479V13.5C15.979 12.6716 15.3074 12 14.479 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M20.4888 18.0089H19.5098C18.6813 18.0089 18.0098 18.6805 18.0098 19.5089V20.4879C18.0098 21.3163 18.6813 21.9879 19.5098 21.9879H20.4888C21.3172 21.9879 21.9888 21.3163 21.9888 20.4879V19.5089C21.9888 18.6805 21.3172 18.0089 20.4888 18.0089Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M26.5005 12H25.5215C24.6931 12 24.0215 12.6716 24.0215 13.5V14.479C24.0215 15.3074 24.6931 15.979 25.5215 15.979H26.5005C27.3289 15.979 28.0005 15.3074 28.0005 14.479V13.5C28.0005 12.6716 27.3289 12 26.5005 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M26.5005 18.0089H25.5215C24.6931 18.0089 24.0215 18.6805 24.0215 19.5089V20.4879C24.0215 21.3163 24.6931 21.9879 25.5215 21.9879H26.5005C27.3289 21.9879 28.0005 21.3163 28.0005 20.4879V19.5089C28.0005 18.6805 27.3289 18.0089 26.5005 18.0089Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M20.4888 24.021H19.5098C18.6813 24.021 18.0098 24.6926 18.0098 25.521V26.5C18.0098 27.3284 18.6813 28 19.5098 28H20.4888C21.3172 28 21.9888 27.3284 21.9888 26.5V25.521C21.9888 24.6926 21.3172 24.021 20.4888 24.021Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M20.4888 12H19.5098C18.6813 12 18.0098 12.6716 18.0098 13.5V14.479C18.0098 15.3074 18.6813 15.979 19.5098 15.979H20.4888C21.3172 15.979 21.9888 15.3074 21.9888 14.479V13.5C21.9888 12.6716 21.3172 12 20.4888 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M26.5005 24.021H25.5215C24.6931 24.021 24.0215 24.6926 24.0215 25.521V26.5C24.0215 27.3284 24.6931 28 25.5215 28H26.5005C27.3289 28 28.0005 27.3284 28.0005 26.5V25.521C28.0005 24.6926 27.3289 24.021 26.5005 24.021Z"
+                                    fill="#FFFF"></path>
+                            </svg>
+                        </button>
+            
+                        <button class="grid-btn" data-columns="3" title="Vista de cuadrícula 3">
+                            <svg class="svg-btn btn-grid-3" width="40" height="AUTO" viewBox="0 0 40 40" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.1588 20.738H17.2324C16.6801 20.738 16.2324 21.1858 16.2324 21.738V22.6309C16.2324 23.1832 16.6801 23.6309 17.2324 23.6309H18.1588C18.7111 23.6309 19.1588 23.1832 19.1588 22.6309V21.738C19.1588 21.1858 18.7111 20.738 18.1588 20.738Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M18.1588 12H17.2324C16.6801 12 16.2324 12.4477 16.2324 13V13.8929C16.2324 14.4451 16.6801 14.8929 17.2324 14.8929H18.1588C18.7111 14.8929 19.1588 14.4451 19.1588 13.8929V13C19.1588 12.4477 18.7111 12 18.1588 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M18.1588 25.1072H17.2324C16.6801 25.1072 16.2324 25.5549 16.2324 26.1072V27C16.2324 27.5523 16.6801 28 17.2324 28H18.1588C18.7111 28 19.1588 27.5523 19.1588 27V26.1072C19.1588 25.5549 18.7111 25.1072 18.1588 25.1072Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M18.1588 16.369H17.2324C16.6801 16.369 16.2324 16.8167 16.2324 17.369V18.2619C16.2324 18.8142 16.6801 19.2619 17.2324 19.2619H18.1588C18.7111 19.2619 19.1588 18.8142 19.1588 18.2619V17.369C19.1588 16.8167 18.7111 16.369 18.1588 16.369Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M13.9264 20.738H13C12.4477 20.738 12 21.1858 12 21.738V22.6309C12 23.1832 12.4477 23.6309 13 23.6309H13.9264C14.4787 23.6309 14.9264 23.1832 14.9264 22.6309V21.738C14.9264 21.1858 14.4787 20.738 13.9264 20.738Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M13.9264 25.1072H13C12.4477 25.1072 12 25.5549 12 26.1072V27C12 27.5523 12.4477 28 13 28H13.9264C14.4787 28 14.9264 27.5523 14.9264 27V26.1072C14.9264 25.5549 14.4787 25.1072 13.9264 25.1072Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M13.9264 12H13C12.4477 12 12 12.4477 12 13V13.8929C12 14.4451 12.4477 14.8929 13 14.8929H13.9264C14.4787 14.8929 14.9264 14.4451 14.9264 13.8929V13C14.9264 12.4477 14.4787 12 13.9264 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M13.9264 16.369H13C12.4477 16.369 12 16.8167 12 17.369V18.2619C12 18.8142 12.4477 19.2619 13 19.2619H13.9264C14.4787 19.2619 14.9264 18.8142 14.9264 18.2619V17.369C14.9264 16.8167 14.4787 16.369 13.9264 16.369Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M22.5797 20.738H21.6533C21.101 20.738 20.6533 21.1858 20.6533 21.738V22.6309C20.6533 23.1832 21.101 23.6309 21.6533 23.6309H22.5797C23.132 23.6309 23.5797 23.1832 23.5797 22.6309V21.738C23.5797 21.1858 23.132 20.738 22.5797 20.738Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M26.9996 16.369H26.0732C25.521 16.369 25.0732 16.8167 25.0732 17.369V18.2619C25.0732 18.8142 25.521 19.2619 26.0732 19.2619H26.9996C27.5519 19.2619 27.9996 18.8142 27.9996 18.2619V17.369C27.9996 16.8167 27.5519 16.369 26.9996 16.369Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M26.9996 20.738H26.0732C25.521 20.738 25.0732 21.1858 25.0732 21.738V22.6309C25.0732 23.1832 25.521 23.6309 26.0732 23.6309H26.9996C27.5519 23.6309 27.9996 23.1832 27.9996 22.6309V21.738C27.9996 21.1858 27.5519 20.738 26.9996 20.738Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M26.9996 12H26.0732C25.521 12 25.0732 12.4477 25.0732 13V13.8929C25.0732 14.4451 25.521 14.8929 26.0732 14.8929H26.9996C27.5519 14.8929 27.9996 14.4451 27.9996 13.8929V13C27.9996 12.4477 27.5519 12 26.9996 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M22.5797 25.1072H21.6533C21.101 25.1072 20.6533 25.5549 20.6533 26.1072V27C20.6533 27.5523 21.101 28 21.6533 28H22.5797C23.132 28 23.5797 27.5523 23.5797 27V26.1072C23.5797 25.5549 23.132 25.1072 22.5797 25.1072Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M22.5797 16.369H21.6533C21.101 16.369 20.6533 16.8167 20.6533 17.369V18.2619C20.6533 18.8142 21.101 19.2619 21.6533 19.2619H22.5797C23.132 19.2619 23.5797 18.8142 23.5797 18.2619V17.369C23.5797 16.8167 23.132 16.369 22.5797 16.369Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M22.5797 12H21.6533C21.101 12 20.6533 12.4477 20.6533 13V13.8929C20.6533 14.4451 21.101 14.8929 21.6533 14.8929H22.5797C23.132 14.8929 23.5797 14.4451 23.5797 13.8929V13C23.5797 12.4477 23.132 12 22.5797 12Z"
+                                    fill="#FFFF"></path>
+                                <path
+                                    d="M26.9996 25.1072H26.0732C25.521 25.1072 25.0732 25.5549 25.0732 26.1072V27C25.0732 27.5523 25.521 28 26.0732 28H26.9996C27.5519 28 27.9996 27.5523 27.9996 27V26.1072C27.9996 25.5549 27.5519 25.1072 26.9996 25.1072Z"
+                                    fill="#FFFF"></path>
+                            </svg>
+                        </button>
+                    </div>
+            
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-bar" placeholder="Search By Token ID">
+                    </div>
+                </div>
+                <div class="filter-container">
+                    <select class="price-filter" title="Filter by price">
+                        <option value="low">Price: Low to High</option>
+                        <option value="high">Price: High to Low</option>
+                        <option value="all">All Prices</option>
+                    </select>
+                    <button class="sweep-btn" title="Sweep">
+                        <i class="fas fa-broom"></i>
+                        Sweep
+                    </button>
+                    <button class="offers-btn" title="Collection & trait offers">
+                        <i class="fas fa-tag"></i>
+                        Collection & trait offers
+                    </button>
+                </div>
+            </div>
+            <div class="search-and-filter">
+                <div class="grid-btn-container">
+                    <button class="grid-btn active" id="m1" data-columns="1" title="Vista de cuadrícula 1">
+                        <svg class="svg-btn btn-grid-1" width="40" height="auto" viewBox="0 0 40 40"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.8611 12H14.2227C13.1181 12 12.2227 12.8954 12.2227 14V16.7315C12.2227 17.8361 13.1181 18.7315 14.2227 18.7315H16.8611C17.9657 18.7315 18.8611 17.836 18.8611 16.7315V14C18.8611 12.8954 17.9657 12 16.8611 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M26.0017 12H23.3633C22.2587 12 21.3633 12.8954 21.3633 14V16.7315C21.3633 17.8361 22.2587 18.7315 23.3633 18.7315H26.0017C27.1063 18.7315 28.0017 17.836 28.0017 16.7315V14C28.0017 12.8954 27.1063 12 26.0017 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M16.6385 21.2686H14C12.8954 21.2686 12 22.164 12 23.2686V26C12 27.1046 12.8954 28 14 28H16.6385C17.743 28 18.6385 27.1046 18.6385 26V23.2686C18.6385 22.164 17.743 21.2686 16.6385 21.2686Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M25.7752 21.2686H23.1367C22.0321 21.2686 21.1367 22.164 21.1367 23.2686V26C21.1367 27.1046 22.0322 28 23.1367 28H25.7752C26.8798 28 27.7752 27.1046 27.7752 26V23.2686C27.7752 22.164 26.8798 21.2686 25.7752 21.2686Z"
+                                fill="#FFFF"></path>
+                        </svg>
+                    </button>
+            
+                    <button class="grid-btn" id="m2" data-columns="2" title="Vista de cuadrícula 2">
+                        <svg class="svg-btn btn-grid-2" width="40" height="auto" viewBox="0 0 40 40"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.479 18.0089H13.5C12.6716 18.0089 12 18.6805 12 19.5089V20.4879C12 21.3163 12.6716 21.9879 13.5 21.9879H14.479C15.3074 21.9879 15.979 21.3163 15.979 20.4879V19.5089C15.979 18.6805 15.3074 18.0089 14.479 18.0089Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M14.479 24.021H13.5C12.6716 24.021 12 24.6926 12 25.521V26.5C12 27.3284 12.6716 28 13.5 28H14.479C15.3074 28 15.979 27.3284 15.979 26.5V25.521C15.979 24.6926 15.3074 24.021 14.479 24.021Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M14.479 12H13.5C12.6716 12 12 12.6716 12 13.5V14.479C12 15.3074 12.6716 15.979 13.5 15.979H14.479C15.3074 15.979 15.979 15.3074 15.979 14.479V13.5C15.979 12.6716 15.3074 12 14.479 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M20.4888 18.0089H19.5098C18.6813 18.0089 18.0098 18.6805 18.0098 19.5089V20.4879C18.0098 21.3163 18.6813 21.9879 19.5098 21.9879H20.4888C21.3172 21.9879 21.9888 21.3163 21.9888 20.4879V19.5089C21.9888 18.6805 21.3172 18.0089 20.4888 18.0089Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M26.5005 12H25.5215C24.6931 12 24.0215 12.6716 24.0215 13.5V14.479C24.0215 15.3074 24.6931 15.979 25.5215 15.979H26.5005C27.3289 15.979 28.0005 15.3074 28.0005 14.479V13.5C28.0005 12.6716 27.3289 12 26.5005 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M26.5005 18.0089H25.5215C24.6931 18.0089 24.0215 18.6805 24.0215 19.5089V20.4879C24.0215 21.3163 24.6931 21.9879 25.5215 21.9879H26.5005C27.3289 21.9879 28.0005 21.3163 28.0005 20.4879V19.5089C28.0005 18.6805 27.3289 18.0089 26.5005 18.0089Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M20.4888 24.021H19.5098C18.6813 24.021 18.0098 24.6926 18.0098 25.521V26.5C18.0098 27.3284 18.6813 28 19.5098 28H20.4888C21.3172 28 21.9888 27.3284 21.9888 26.5V25.521C21.9888 24.6926 21.3172 24.021 20.4888 24.021Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M20.4888 12H19.5098C18.6813 12 18.0098 12.6716 18.0098 13.5V14.479C18.0098 15.3074 18.6813 15.979 19.5098 15.979H20.4888C21.3172 15.979 21.9888 15.3074 21.9888 14.479V13.5C21.9888 12.6716 21.3172 12 20.4888 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M26.5005 24.021H25.5215C24.6931 24.021 24.0215 24.6926 24.0215 25.521V26.5C24.0215 27.3284 24.6931 28 25.5215 28H26.5005C27.3289 28 28.0005 27.3284 28.0005 26.5V25.521C28.0005 24.6926 27.3289 24.021 26.5005 24.021Z"
+                                fill="#FFFF"></path>
+                        </svg>
+                    </button>
+            
+                    <button class="grid-btn" id="m3" data-columns="3" title="Vista de cuadrícula 3">
+                        <svg class="svg-btn btn-grid-3" width="40" height="AUTO" viewBox="0 0 40 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.1588 20.738H17.2324C16.6801 20.738 16.2324 21.1858 16.2324 21.738V22.6309C16.2324 23.1832 16.6801 23.6309 17.2324 23.6309H18.1588C18.7111 23.6309 19.1588 23.1832 19.1588 22.6309V21.738C19.1588 21.1858 18.7111 20.738 18.1588 20.738Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M18.1588 12H17.2324C16.6801 12 16.2324 12.4477 16.2324 13V13.8929C16.2324 14.4451 16.6801 14.8929 17.2324 14.8929H18.1588C18.7111 14.8929 19.1588 14.4451 19.1588 13.8929V13C19.1588 12.4477 18.7111 12 18.1588 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M18.1588 25.1072H17.2324C16.6801 25.1072 16.2324 25.5549 16.2324 26.1072V27C16.2324 27.5523 16.6801 28 17.2324 28H18.1588C18.7111 28 19.1588 27.5523 19.1588 27V26.1072C19.1588 25.5549 18.7111 25.1072 18.1588 25.1072Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M18.1588 16.369H17.2324C16.6801 16.369 16.2324 16.8167 16.2324 17.369V18.2619C16.2324 18.8142 16.6801 19.2619 17.2324 19.2619H18.1588C18.7111 19.2619 19.1588 18.8142 19.1588 18.2619V17.369C19.1588 16.8167 18.7111 16.369 18.1588 16.369Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M13.9264 20.738H13C12.4477 20.738 12 21.1858 12 21.738V22.6309C12 23.1832 12.4477 23.6309 13 23.6309H13.9264C14.4787 23.6309 14.9264 23.1832 14.9264 22.6309V21.738C14.9264 21.1858 14.4787 20.738 13.9264 20.738Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M13.9264 25.1072H13C12.4477 25.1072 12 25.5549 12 26.1072V27C12 27.5523 12.4477 28 13 28H13.9264C14.4787 28 14.9264 27.5523 14.9264 27V26.1072C14.9264 25.5549 14.4787 25.1072 13.9264 25.1072Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M13.9264 12H13C12.4477 12 12 12.4477 12 13V13.8929C12 14.4451 12.4477 14.8929 13 14.8929H13.9264C14.4787 14.8929 14.9264 14.4451 14.9264 13.8929V13C14.9264 12.4477 14.4787 12 13.9264 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M13.9264 16.369H13C12.4477 16.369 12 16.8167 12 17.369V18.2619C12 18.8142 12.4477 19.2619 13 19.2619H13.9264C14.4787 19.2619 14.9264 18.8142 14.9264 18.2619V17.369C14.9264 16.8167 14.4787 16.369 13.9264 16.369Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M22.5797 20.738H21.6533C21.101 20.738 20.6533 21.1858 20.6533 21.738V22.6309C20.6533 23.1832 21.101 23.6309 21.6533 23.6309H22.5797C23.132 23.6309 23.5797 23.1832 23.5797 22.6309V21.738C23.5797 21.1858 23.132 20.738 22.5797 20.738Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M26.9996 16.369H26.0732C25.521 16.369 25.0732 16.8167 25.0732 17.369V18.2619C25.0732 18.8142 25.521 19.2619 26.0732 19.2619H26.9996C27.5519 19.2619 27.9996 18.8142 27.9996 18.2619V17.369C27.9996 16.8167 27.5519 16.369 26.9996 16.369Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M26.9996 20.738H26.0732C25.521 20.738 25.0732 21.1858 25.0732 21.738V22.6309C25.0732 23.1832 25.521 23.6309 26.0732 23.6309H26.9996C27.5519 23.6309 27.9996 23.1832 27.9996 22.6309V21.738C27.9996 21.1858 27.5519 20.738 26.9996 20.738Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M26.9996 12H26.0732C25.521 12 25.0732 12.4477 25.0732 13V13.8929C25.0732 14.4451 25.521 14.8929 26.0732 14.8929H26.9996C27.5519 14.8929 27.9996 14.4451 27.9996 13.8929V13C27.9996 12.4477 27.5519 12 26.9996 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M22.5797 25.1072H21.6533C21.101 25.1072 20.6533 25.5549 20.6533 26.1072V27C20.6533 27.5523 21.101 28 21.6533 28H22.5797C23.132 28 23.5797 27.5523 23.5797 27V26.1072C23.5797 25.5549 23.132 25.1072 22.5797 25.1072Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M22.5797 16.369H21.6533C21.101 16.369 20.6533 16.8167 20.6533 17.369V18.2619C20.6533 18.8142 21.101 19.2619 21.6533 19.2619H22.5797C23.132 19.2619 23.5797 18.8142 23.5797 18.2619V17.369C23.5797 16.8167 23.132 16.369 22.5797 16.369Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M22.5797 12H21.6533C21.101 12 20.6533 12.4477 20.6533 13V13.8929C20.6533 14.4451 21.101 14.8929 21.6533 14.8929H22.5797C23.132 14.8929 23.5797 14.4451 23.5797 13.8929V13C23.5797 12.4477 23.132 12 22.5797 12Z"
+                                fill="#FFFF"></path>
+                            <path
+                                d="M26.9996 25.1072H26.0732C25.521 25.1072 25.0732 25.5549 25.0732 26.1072V27C25.0732 27.5523 25.521 28 26.0732 28H26.9996C27.5519 28 27.9996 27.5523 27.9996 27V26.1072C27.9996 25.5549 27.5519 25.1072 26.9996 25.1072Z"
+                                fill="#FFFF"></path>
+                        </svg>
+                    </button>
+                </div>
+            
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-bar" placeholder="Search By Token ID">
+                </div>
+            
+                <div class="filter-container">
+                    <select class="price-filter" title="Filter by price">
+                        <option value="low">Price: Low to High</option>
+                        <option value="high">Price: High to Low</option>
+                        <option value="all">All Prices</option>
+                    </select>
+                    <button class="sweep-btn" title="Sweep">
+                        <i class="fas fa-broom"></i>
+                        Sweep
+                    </button>
+                    <button class="offers-btn" title="Collection & trait offers">
+                        <i class="fas fa-tag"></i>
+                        Collection & trait offers
+                    </button>
+                </div>
+            </div>
+            <div class="only">
+
+            <div class="sidebar">
+            <div class="tittle-sidebar">
+                <h2 class="title-all-filters">Filterss</h2>
+            </div>
+            <div class="sidebar-sections said">
+                <div class="section">
+                    <div class="section-content">
+                        <label for="price-range" class="section-title">Price Range</label>
+                        <div class="containter-price">
+                            <input type="text" id="price-range" class="input-price" placeholder="Min">
+                            <p id="to">to</p>
+                            <input type="text" id="price-range-max" class="input-price" placeholder="Max">
+                        </div>
+                    </div>
+                </div>
+                <div class="section section-category">
+                    <h2 class="section-title" id="category">Category</h2>
+                    <div class="section-content">
+                        <label class="label-category" id="pp0">PP0<input class="input-category" type="checkbox"></label>
+                        <label class="label-category" id="pp1">PP1<input class="input-category" type="checkbox"></label>
+                        <label class="label-category" id="pp2">PP2<input class="input-category" type="checkbox"></label>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title" id="rarity">Rarity</h2>
+                    <div class="section-content">
+                        <label id="legendary" class="label-category">
+                            Legendary
+                            <input type="checkbox" class="input-category">
+                        </label>
+                        <label id="mythic" class="label-category">
+                            Mythic
+                            <input type="checkbox" class="input-category">
+                        </label>
+                        <label id="rare" class="label-category">
+                            Rare
+                            <input type="checkbox" class="input-category">
+                        </label >
+                        <label id="common" class="label-category">
+                            Common
+                            <input type="checkbox" class="input-category" id="common-2">
+                        </label>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Stats</h2>
+                    <div class="section-content">
+                        <label class="label-category icons"><img src="static/img/shield.png" alt="heart" class="icon-stats"></label>
+                        <label class="label-category icons"><img src="static/img/energy.png" alt="lightning" class="icon-stats"></label>
+                        <label class="label-category icons"><img src="static/img/life.png" alt="sword" class="icon-stats"></label>
+                        <label class="label-category icons" id="xd"><img src="static/img/X.png" alt="sword" class="icon-stats"></label>
+                    </div>
+                </div>
+                <div class="section properties">
+                    <h2 class="section-title properties ">Properties</h2>
+                    <div class="none">
+                        <details>
+                            <summary class="label-category xd noborder">Background </summary>
+                            <label class="label-category label-sumary noborder">diego <input type="checkbox" class="input-category"></label>
+                        </details>
+                        <details>
+                            <summary class="label-category noborder">Mouth </summary>
+                            <label class="label-category label-sumary noborder">hola <input type="checkbox" class="input-category"></label>
+                        </details>
+                        <details>
+                            <summary class="label-category noborder">Eyes </summary>
+                            <label class="label-category label-sumary noborder">xd <input type="checkbox" class="input-category"></label>
+                        </details>
+                        <details>
+                            <summary class="label-category noborder">Head </summary>
+                            <label class="label-category label-sumary noborder">Head <input type="checkbox" class="input-category"></label>
+                        </details>
+                        <details>
+                            <summary class="label-category noborder">Shirt </summary>
+                            <label class="label-category label-sumary noborder">Shirt <input type="checkbox" class="input-category"></label>
+                        </details>
+                </div>
+            </div>
+            </div>
+            </div>   
+
+            <!-- COMIENZO DEL CONTENIDO -->
+            <div class="container">
+            <div class="body">  
+                <div class="marketplace-container">
+                    <!-- Las cartas se generarán dinámicamente con JavaScript -->
+                </div><!--.marketplace-container-->
+            </div>
+            </div>
+        </div> <!--CONTAINER SIDEBAR CONTAINER -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-nav">
+                <a href="play.html" class="footer-link">PLAY</a>
+                <span class="footer-separator">|</span>
+                <a href="marketplace.html" class="footer-link">MARKETPLACE</a>
+                <span class="footer-separator">|</span>
+                <a href="museum.html" class="footer-link">MUSEUM</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link">SUPPORT</a>
+            </div>
+    
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Pingu Game. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/marketplace.js"></script>
+    <script src="static/js/cardGenerator.js"></script>
+</body>
+</html>

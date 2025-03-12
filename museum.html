@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum - Pingu Game</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+        }
+        
+        .museum-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .museum-title {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px rgba(100, 100, 255, 0.7);
+        }
+        
+        .coming-soon {
+            font-size: 1.2rem;
+            border: 2px solid #fff;
+            display: inline-block;
+            padding: 20px 40px;
+            border-radius: 10px;
+            background-color: rgba(40, 40, 80, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(100, 100, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(100, 100, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(100, 100, 255, 0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" id="link-index">
+            <img src="static/img/doge-logo.png" alt="doge logo" class="logo">
+            <div class="logo-and-tittle">
+                <h1 class="tittle">Doge coin</h1>
+            </div>
+        </a>
+        <div class="container-menu">
+            <nav class="nav-menu" id="nav-menu">
+                <a href="play.html" class="button button-text play">
+                    PLAY
+                </a>
+                <a href="marketplace.html" class="button button-text">
+                    MARKETPLACE
+                </a>
+                <a href="museum.html" class="button button-text">
+                    MUSEUM
+                </a>
+                <div class="container-buttons-links">
+    
+                    <a href="cart.html" class="button button-link">
+                        <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+                    </a>
+                    <a href="settings.html" class="button button-link">
+                        <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+                    </a>
+                    <a href="wallet.html" class="button button-link car">
+                        <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+                    </a>
+    
+                </div>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuToggle = document.getElementById('menu-toggle');
+                const navMenu = document.getElementById('nav-menu');
+                
+                // Abrir/cerrar menú al hacer clic en el botón
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Efecto de pulsación
+                    this.classList.add('pressed');
+                    setTimeout(() => {
+                        this.classList.remove('pressed');
+                    }, 150);
+                    
+                    // Toggle del menú con pequeño retraso para efecto visual
+                    setTimeout(() => {
+                        this.classList.toggle('active');
+                        navMenu.classList.toggle('active');
+                        
+                        // Bloquear/desbloquear desplazamiento del body
+                        if (navMenu.classList.contains('active')) {
+                            document.body.style.overflow = 'hidden';
+                            // Asegurar visibilidad al abrir
+                            setTimeout(function() {
+                                navMenu.style.visibility = 'visible';
+                            }, 10);
+                        } else {
+                            document.body.style.overflow = '';
+                            // Retrasar el cambio de visibilidad hasta que termine la animación
+                            setTimeout(function() {
+                                navMenu.style.visibility = 'hidden';
+                            }, 400); // tiempo igual a la duración de la transición
+                        }
+                    }, 100);
+                });
+                
+                // Cerrar menú al hacer clic en un enlace
+                const navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        // Retrasar el cambio de visibilidad hasta que termine la animación
+                        setTimeout(function() {
+                            navMenu.style.visibility = 'hidden';
+                        }, 400);
+                    });
+                });
+                
+                // Cerrar menú al hacer clic fuera del menú
+                document.addEventListener('click', function(e) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(e.target) && 
+                        !menuToggle.contains(e.target)) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        // Retrasar el cambio de visibilidad hasta que termine la animación
+                        setTimeout(function() {
+                            navMenu.style.visibility = 'hidden';
+                        }, 400);
+                    }
+                });
+                
+                // Cerrar menú con la tecla Escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        // Retrasar el cambio de visibilidad hasta que termine la animación
+                        setTimeout(function() {
+                            navMenu.style.visibility = 'hidden';
+                        }, 400);
+                    }
+                });
+            });
+        </script>
+    
+        <div class="links">
+            <a href="play.html" class="button button-text play">
+                PLAY
+            </a>
+            <a href="marketplace.html" class="button button-text">
+                MARKETPLACE
+            </a>
+            <a href="museum.html" class="button button-text">
+                MUSEUM
+            </a>
+            <a href="cart.html" class="button button-link">
+                <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+            </a>
+            <a href="settings.html" class="button button-link">
+                <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+            </a>
+            <a href="wallet.html" class="button button-link car">
+                <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+            </a>
+        </div>
+    </header>
+
+    <main class="museum-container">
+        <h1 class="museum-title">MUSEUM</h1>
+        <div class="coming-soon">
+            Próximamente... Aquí podrás explorar la historia y evolución de tu colección de NFTs
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-nav">
+                <a href="play.html" class="footer-link">PLAY</a>
+                <span class="footer-separator">|</span>
+                <a href="marketplace.html" class="footer-link">MARKETPLACE</a>
+                <span class="footer-separator">|</span>
+                <a href="museum.html" class="footer-link">MUSEUM</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link">SUPPORT</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Pingu Game. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

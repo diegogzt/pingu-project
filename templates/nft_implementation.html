@@ -1,0 +1,53 @@
+<!-- 
+Este es un ejemplo de cómo implementar el nft-cards-container con las 
+cartas del marketplace usando el nuevo archivo CSS específico para cartas.
+-->
+
+<!-- 
+1. Incluir el archivo CSS específico para las cartas
+   (Puedes omitir marketplace.css y m3-styles.css si ya los tienes incluidos)
+-->
+<link rel="stylesheet" href="static/css/card-styles.css">
+
+<!-- 2. Asegúrate de tener el contenedor para las cartas NFT -->
+<div id="nft-cards-container" class="marketplace-container">
+    <!-- Las cartas se cargarán aquí automáticamente -->
+</div>
+
+<!-- 
+3. Incluye primero el script del cardGenerator (que tiene las funciones base),
+   y luego el script nftContainerLoader que hemos creado 
+-->
+<script src="static/js/cardGenerator.js"></script>
+<script src="static/js/nftContainerLoader.js"></script>
+
+<!-- 
+4. Opcional: Si quieres añadir funcionalidad de búsqueda o filtrado,
+   puedes usar estas funciones con tus propios controles:
+-->
+<!--
+<input type="text" placeholder="Buscar por ID..." oninput="searchNftCardsByID(this.value)">
+
+<select onchange="filterNftCardsByRarity(this.value)" aria-label="Filtrar por rareza">
+    <option value="all">Todas las rarezas</option>
+    <option value="legendary">Legendary</option>
+    <option value="mythic">Mythic</option>
+    <option value="rare">Rare</option>
+    <option value="common">Common</option>
+</select>
+-->
+
+<!-- 
+5. Para alternar entre los estilos normales y M3, puedes usar esto:
+-->
+<!--
+<button onclick="document.body.classList.toggle('m3-style')">
+    Cambiar Estilo
+</button>
+-->
+
+<!-- 
+6. Ahora puedes usar las tarjetas en cualquier página sin necesidad
+   de importar todos los estilos del marketplace, sólo necesitas
+   el archivo card-styles.css
+--> 

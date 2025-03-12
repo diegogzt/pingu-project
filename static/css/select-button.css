@@ -1,0 +1,15 @@
+/* Estilos adicionales para el botón Select */
+.select {
+    left: 182px;
+    z-index: 100 !important; /* Asegurar que está por encima de otros elementos */
+    cursor: pointer !important;
+}
+
+.select-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    color: #333;
+    text-align: center;
+    padding-top: 2px;
+    pointer-events: none; /* Permite que los clics pasen al elemento padre */
+} 

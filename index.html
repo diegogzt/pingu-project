@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <!-- FUENTES DE GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!---------------------------------------------------------------->
+</head>
+<body>
+        <header>
+            <a href="index.html" id="link-index">
+                <img src="static/img/doge-logo.png" alt="doge logo" class="logo">
+                <div class="logo-and-tittle">
+                    <h1 class="tittle">Doge coin</h1>
+                </div>
+            </a>
+            <div class="container-menu">
+                <nav class="nav-menu" id="nav-menu">
+                    <a href="play.html" class="button button-text play">
+                        PLAY
+                    </a>
+                    <a href="marketplace.html" class="button button-text">
+                        MARKETPLACE
+                    </a>
+                    <a href="museum.html" class="button button-text">
+                        MUSEUM
+                    </a>
+                    <div class="container-buttons-links">
+
+                        <a href="cart.html" class="button button-link">
+                            <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+                        </a>
+                        <a href="settings.html" class="button button-link">
+                            <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+                        </a>
+                        <a href="wallet.html" class="button button-link car">
+                            <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+                        </a>
+        
+                    </div>
+                </nav>
+                <div class="menu-toggle" id="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const menuToggle = document.getElementById('menu-toggle');
+                    const navMenu = document.getElementById('nav-menu');
+                    
+                    // Abrir/cerrar menú al hacer clic en el botón
+                    menuToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Efecto de pulsación
+                        this.classList.add('pressed');
+                        setTimeout(() => {
+                            this.classList.remove('pressed');
+                        }, 150);
+                        
+                        // Toggle del menú con pequeño retraso para efecto visual
+                        setTimeout(() => {
+                            this.classList.toggle('active');
+                            navMenu.classList.toggle('active');
+                            
+                            // Bloquear/desbloquear desplazamiento del body
+                            if (navMenu.classList.contains('active')) {
+                                document.body.style.overflow = 'hidden';
+                                // Asegurar visibilidad al abrir
+                                setTimeout(function() {
+                                    navMenu.style.visibility = 'visible';
+                                }, 10);
+                            } else {
+                                document.body.style.overflow = '';
+                                // Retrasar el cambio de visibilidad hasta que termine la animación
+                                setTimeout(function() {
+                                    navMenu.style.visibility = 'hidden';
+                                }, 400); // tiempo igual a la duración de la transición
+                            }
+                        }, 100);
+                    });
+                    
+                    // Cerrar menú al hacer clic en un enlace
+                    const navLinks = navMenu.querySelectorAll('a');
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', function() {
+                            menuToggle.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                            // Retrasar el cambio de visibilidad hasta que termine la animación
+                            setTimeout(function() {
+                                navMenu.style.visibility = 'hidden';
+                            }, 400);
+                        });
+                    });
+                    
+                    // Cerrar menú al hacer clic fuera del menú
+                    document.addEventListener('click', function(e) {
+                        if (navMenu.classList.contains('active') && 
+                            !navMenu.contains(e.target) && 
+                            !menuToggle.contains(e.target)) {
+                            menuToggle.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                            // Retrasar el cambio de visibilidad hasta que termine la animación
+                            setTimeout(function() {
+                                navMenu.style.visibility = 'hidden';
+                            }, 400);
+                        }
+                    });
+                    
+                    // Cerrar menú con la tecla Escape
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                            menuToggle.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                            // Retrasar el cambio de visibilidad hasta que termine la animación
+                            setTimeout(function() {
+                                navMenu.style.visibility = 'hidden';
+                            }, 400);
+                        }
+                    });
+                    
+                    // Efecto hover en botones
+                    const buttons = navMenu.querySelectorAll('.button, a');
+                    buttons.forEach(button => {
+                        button.addEventListener('mouseenter', function() {
+                            if (navMenu.classList.contains('active')) {
+                                this.style.transform = 'translateY(-2px)';
+                                this.style.boxShadow = '4px 6px 0 #000';
+                            }
+                        });
+                        
+                        button.addEventListener('mouseleave', function() {
+                            this.style.transform = '';
+                            this.style.boxShadow = '';
+                        });
+                    });
+                });
+            </script>
+        
+            <div class="links">
+                <a href="play.html" class="button button-text play">
+                    PLAY
+                </a>
+                <a href="marketplace.html" class="button button-text">
+                    MARKETPLACE
+                </a>
+                <a href="museum.html" class="button button-text">
+                    MUSEUM
+                </a>
+                <a href="cart.html" class="button button-link">
+                    <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+                </a>
+                <a href="settings.html" class="button button-link">
+                    <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+                </a>
+                <a href="wallet.html" class="button button-link car">
+                    <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+                </a>
+            </div>
+        </header>
+    <main id="main-index">
+       <div class="container-main"> 
+           <div class="container-large-box">
+               <div class="large-box">
+                   <img class="img-large-box" src="static/img/cyber.jpg" alt="foto generada con ia">
+                </div>
+            </div>
+            <div class="main-content-container">
+                <section class="main-content">
+                    <div class="text-box">
+                        <p>
+                        Dogecoin, a menudo abreviado como DOGE, es una criptomoneda digital que se lanzó en 2013 como una bifurcación de
+                        Litecoin. Se diferencia de Bitcoin en varios aspectos, incluyendo su suministro ilimitado y su tiempo de bloque más
+                        rápido. Originalmente creada como una "moneda meme" basada en el popular meme de internet "Doge", que presenta un perro
+                        Shiba Inu, Dogecoin ha ganado una gran popularidad y ha desarrollado una comunidad en línea activa.
+                        </p>
+                        <a href="#" class="button button-text">
+                            MARKETPLACE
+                        </a>
+                    </div>
+                    <div class="video">
+                        <video src="sources/video/video.mp4" autoplay muted loop></video>
+                    </div>
+                </section>
+            </div>
+            <!-- Contenedor de cartas -->
+             <section class="section-cards">
+                <h1></h1>
+                 <div class="card-container">
+                    <div class="card"> 
+                        <div class="container-ground">
+                            <div class="ground"></div>
+                        </div>
+                    <div class="back">
+                        <div class="blue"></div>
+                        <div class="text">SKIP</div>
+                    </div>
+                    <div class="front">
+                        <div class="blue"></div>
+                        <div class="text-center">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z" fill="#191f1f"></path>
+                                <path d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z" fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-top">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z" fill="#191f1f"></path>
+                                <path d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z" fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-bottom">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z" fill="#191f1f"></path>
+                                <path d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z" fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card"> <div class="container-ground">
+                            <div class="ground"></div>
+                        </div>
+                    <div class="back">
+                        <div class="blue"></div>
+                        <div class="text">SKIP</div>
+                    </div>
+                    <div class="front">
+                        <div class="blue"></div>
+                        <div class="text-center">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-top">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-bottom">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card"> 
+                    <div class="container-ground">
+                            <div class="ground"></div>
+                        </div>
+                        <div class="shadow"></div>
+                    <div class="back">
+                        <div class="blue"></div>
+                        <div class="text">SKIP</div>
+                    </div>
+                    <div class="front">
+                        <div class="blue"></div>
+                        <div class="text-center">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-top">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-bottom">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card"> <div class="container-ground">
+                            <div class="ground"></div>
+                        </div>
+                    <div class="back">
+                        <div class="blue"></div>
+                        <div class="text">SKIP</div>
+                    </div>
+                    <div class="front">
+                        <div class="blue"></div>
+                        <div class="text-center">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-top">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-bottom">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card"> <div class="container-ground">
+                            <div class="ground"></div>
+                        </div>
+                    <div class="back">
+                        <div class="blue"></div>
+                        <div class="text">SKIP</div>
+                    </div>
+                    <div class="front">
+                        <div class="blue"></div>
+                        <div class="text-center">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-top">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                        <div class="text-bottom">
+                            <svg viewBox="0 0 48 48">
+                                <path
+                                d="M 14,24 C 14,24 14,20 16,20 L 20,20 L 20,16 L 16,16 C 12,16 10,20 10,24 C 10,28 12,32 16,32 L 20,32 L 20,28 L 16,28 C 14,28 14,24 14,24 Z"
+                                fill="#191f1f"></path>
+                                <path
+                                d="M 24,16 L 28,16 L 28,12 L 24,12 C 20,12 18,16 18,20 C 18,24 20,28 24,28 L 28,28 L 28,24 L 24,24 C 22,24 22,20 24,20 Z"
+                                fill="#fffffd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repite el bloque de la carta 5 veces más para tener un total de 6 cartas -->
+            </section>
+            </div>
+        </div>
+    </main>
+    <footer class="footer footer-index">
+        <div class="footer-container">
+            <div class="footer-nav">
+                <a href="play.html" class="footer-link">PLAY</a>
+                <span class="footer-separator">|</span>
+                <a href="marketplace.html" class="footer-link">MARKETPLACE</a>
+                <span class="footer-separator">|</span>
+                <a href="museum.html" class="footer-link">MUSEUM</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link">SUPPORT</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Pingu Game. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="static/js/script.js"></script>
+</body>
+</html>
