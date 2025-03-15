@@ -17,6 +17,7 @@ body {
 }
 
 .gameboy {
+    margin-top: 15dvh;
     position: relative;
     height: 1080px;
     width: 660px;

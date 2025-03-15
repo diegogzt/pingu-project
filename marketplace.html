@@ -513,6 +513,10 @@
                     <i class="fas fa-search search-icon"></i>
                     <input type="text" class="search-bar" placeholder="Search By Token ID">
                 </div>
+                <button class="filters-mobile-btn" title="Show Filters">
+                    <i class="fas fa-filter"></i>
+                    Filters
+                </button>
             
                 <div class="filter-container">
                     <select class="price-filter" title="Filter by price">
@@ -649,5 +653,70 @@
 
     <script src="static/js/marketplace.js"></script>
     <script src="static/js/cardGenerator.js"></script>
+
+    <!-- Modal de Filtros para móvil -->
+    <div id="filters-modal" class="filters-modal">
+        <div class="filters-modal-content">
+            <div class="filters-modal-header">
+                <h2>Filters</h2>
+                <button class="close-filters-btn">&times;</button>
+            </div>
+            <div class="filters-modal-body">
+                <!-- Contenido de la sidebar -->
+                <div class="section">
+                    <div class="section-content">
+                        <label for="price-range-modal" class="section-title">Price Range</label>
+                        <div class="containter-price">
+                            <input type="text" id="price-range-modal" class="input-price" placeholder="Min">
+                            <p id="to-modal">to</p>
+                            <input type="text" id="price-range-max-modal" class="input-price" placeholder="Max">
+                        </div>
+                    </div>
+                </div>
+                <div class="section section-category">
+                    <h2 class="section-title">Category</h2>
+                    <div class="section-content">
+                        <label class="label-category">PP0<input class="input-category" type="checkbox"></label>
+                        <label class="label-category">PP1<input class="input-category" type="checkbox"></label>
+                        <label class="label-category">PP2<input class="input-category" type="checkbox"></label>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Rarity</h2>
+                    <div class="section-content">
+                        <label class="label-category">
+                            Legendary
+                            <input type="checkbox" class="input-category">
+                        </label>
+                        <label class="label-category">
+                            Mythic
+                            <input type="checkbox" class="input-category">
+                        </label>
+                        <label class="label-category">
+                            Rare
+                            <input type="checkbox" class="input-category">
+                        </label >
+                        <label class="label-category">
+                            Common
+                            <input type="checkbox" class="input-category">
+                        </label>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title properties">Properties</h2>
+                    <div class="section-content">
+                        <details>
+                            <summary class="label-category noborder">Background </summary>
+                            <div class="details-content">
+                                <label class="label-category">Blue<input type="checkbox" class="input-category"></label>
+                                <label class="label-category">Red<input type="checkbox" class="input-category"></label>
+                                <label class="label-category">Green<input type="checkbox" class="input-category"></label>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

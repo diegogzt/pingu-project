@@ -13,8 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Actualizar clases de los elementos para cambiar la vista
             if (columns === "1") {
                 updateMarketItemClasses('two-columns');
+                // Aplicar modo de 2 cartas por fila
+                applyTwoCardsStyle();
             } else if (columns === "2") {
                 updateMarketItemClasses('four-columns');
+                // Restaurar estilos originales
+                resetCardStyles();
             } else if (columns === "3") {
                 updateMarketItemClasses('six-columns');
             }
@@ -69,9 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Implementar búsqueda por ID de token
     const searchBar = document.querySelector('.search-bar');
     if (searchBar) {
-        // Búsqueda en tiempo real mientras se escribe
-        searchBar.addEventListener('input', function() {
-            const searchTerm = this.value.trim().toLowerCase();
+        // Función para realizar la búsqueda
+        function performSearch(searchTerm, exactMatch = false) {
+            searchTerm = searchTerm.trim().toLowerCase();
             const cards = document.querySelectorAll('.card');
             let resultsFound = false;
             
@@ -86,16 +90,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
+            // Eliminar cualquier resaltado previo
+            cards.forEach(card => {
+                card.classList.remove('highlighted-card');
+            });
+            
             cards.forEach(card => {
                 // Buscar el ID del token en el elemento card-id
                 const tokenIdElement = card.querySelector('.card-id');
                 if (tokenIdElement) {
                     const tokenId = tokenIdElement.textContent.trim().toLowerCase();
                     
+                    // Determinar si la tarjeta coincide con la búsqueda
+                    let isMatch = false;
+                    
+                    if (exactMatch) {
+                        // Búsqueda exacta
+                        isMatch = tokenId === searchTerm;
+                    } else {
+                        // Búsqueda parcial
+                        isMatch = tokenId.includes(searchTerm);
+                    }
+                    
                     // Mostrar u ocultar la tarjeta según si coincide con la búsqueda
-                    if (tokenId.includes(searchTerm)) {
+                    if (isMatch) {
                         card.style.display = '';
                         resultsFound = true;
+                        
+                        // Si es una coincidencia exacta, resaltar la tarjeta
+                        if (exactMatch || tokenId === searchTerm) {
+                            card.classList.add('highlighted-card');
+                            // Hacer scroll a la tarjeta encontrada
+                            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            
+                            // Quitar el resaltado después de un tiempo
+                            setTimeout(() => {
+                                card.classList.remove('highlighted-card');
+                            }, 2000);
+                        }
                     } else {
                         card.style.display = 'none';
                     }
@@ -108,6 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 removeNoResultsMessage();
             }
+            
+            return resultsFound;
+        }
+        
+        // Búsqueda en tiempo real mientras se escribe
+        searchBar.addEventListener('input', function() {
+            performSearch(this.value, false); // Búsqueda parcial
         });
         
         // Buscar al presionar Enter
@@ -117,44 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault(); // Prevenir comportamiento por defecto
                 
                 const searchTerm = this.value.trim().toLowerCase();
-                const cards = document.querySelectorAll('.card');
-                let resultsFound = false;
                 
-                // Si no hay término de búsqueda, mostrar todas las tarjetas
-                if (searchTerm === '') {
-                    cards.forEach(card => {
-                        card.style.display = '';
-                    });
-                    removeNoResultsMessage();
-                    return;
-                }
+                // Intentar primero una búsqueda exacta
+                const exactMatchFound = performSearch(searchTerm, true);
                 
-                cards.forEach(card => {
-                    const tokenIdElement = card.querySelector('.card-id');
-                    if (tokenIdElement) {
-                        const tokenId = tokenIdElement.textContent.trim().toLowerCase();
-                        
-                        // Buscar coincidencia exacta solo al presionar Enter
-                        if (tokenId === searchTerm) {
-                            card.style.display = '';
-                            resultsFound = true;
-                            
-                            // Agregar efecto de resaltado a la card encontrada
-                            card.classList.add('highlighted-card');
-                            setTimeout(() => {
-                                card.classList.remove('highlighted-card');
-                            }, 2000);
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-                
-                // Mostrar mensaje si no se encontraron resultados
-                if (!resultsFound) {
-                    showNoResultsMessage();
-                } else {
-                    removeNoResultsMessage();
+                // Si no se encuentra una coincidencia exacta, realizar una búsqueda parcial
+                if (!exactMatchFound) {
+                    performSearch(searchTerm, false);
                 }
             }
         });
@@ -167,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 cards.forEach(card => {
                     card.style.display = '';
+                    card.classList.remove('highlighted-card');
                 });
                 
                 removeNoResultsMessage();
@@ -451,6 +460,46 @@ function adjustCardStyles() {
     });
 }
 
+// Función para aplicar el estilo de 2 cartas por fila (m1)
+function applyTwoCardsStyle() {
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        // Ajustar tamaños para mostrar solo 2 cartas por fila
+        card.style.flexBasis = '48%';
+        card.style.width = '48%';
+        card.style.maxWidth = '48%';
+        card.style.aspectRatio = '0.7/1';
+        
+        // Mantener la información visible (a diferencia de m3)
+        const cardStats = card.querySelector('.card-stats');
+        const cardActions = card.querySelector('.card-actions');
+        
+        if (cardStats) cardStats.style.display = 'flex';
+        if (cardActions) cardActions.style.display = 'flex';
+    });
+}
+
+// Función para restaurar los estilos originales de las cartas
+function resetCardStyles() {
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        // Restaurar tamaños originales
+        card.style.flexBasis = '';
+        card.style.width = '';
+        card.style.maxWidth = '';
+        card.style.aspectRatio = '';
+        
+        // Asegurar que la información y acciones están visibles
+        const cardStats = card.querySelector('.card-stats');
+        const cardActions = card.querySelector('.card-actions');
+        
+        if (cardStats) cardStats.style.display = 'flex';
+        if (cardActions) cardActions.style.display = 'flex';
+    });
+}
+
 // Función para ajustar la altura de las tarjetas basada en su ancho
 function ajustarAlturaCards() {
     // Seleccionar todas las tarjetas
@@ -473,6 +522,46 @@ window.addEventListener('load', ajustarAlturaCards);
 
 // Ejecutar la función cuando se redimensiona la ventana
 window.addEventListener('resize', ajustarAlturaCards);
+
+// Funcionalidad para el botón de filtros móvil y el modal
+function setupFiltersModal() {
+    const filtersBtn = document.querySelector('.filters-mobile-btn');
+    const filtersModal = document.getElementById('filters-modal');
+    const closeBtn = document.querySelector('.close-filters-btn');
+    
+    if (filtersBtn && filtersModal && closeBtn) {
+        // Abrir el modal al hacer clic en el botón de filtros
+        filtersBtn.addEventListener('click', () => {
+            filtersModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll en el body
+        });
+        
+        // Cerrar el modal al hacer clic en el botón de cerrar
+        closeBtn.addEventListener('click', () => {
+            filtersModal.classList.remove('show');
+            document.body.style.overflow = ''; // Restaurar scroll en el body
+        });
+        
+        // Cerrar el modal al hacer clic fuera del contenido del modal
+        filtersModal.addEventListener('click', (e) => {
+            if (e.target === filtersModal) {
+                filtersModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Cerrar el modal con la tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && filtersModal.classList.contains('show')) {
+                filtersModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+}
+
+// Ejecutar la configuración del modal de filtros cuando se carga la página
+document.addEventListener('DOMContentLoaded', setupFiltersModal);
 
 // Función para configurar la estructura de los summaries con barras de búsqueda
 function setupDetailsSummaries() {
