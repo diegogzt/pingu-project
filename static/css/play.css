@@ -16,17 +16,39 @@ body {
     box-sizing: border-box;
 }
 
+/* Clase para texto accesible solo para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Estilo para el texto encima del juego */
+.text-up-game {
+    font-family: var(--pixel);
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
 .gameboy {
-    margin-top: 15dvh;
+    margin-top: 82dvh;
     position: relative;
     height: 1080px;
     width: 660px;
     font-family: 'Arial', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transform: scale(0.5);
+    /* transform scale controlado por JavaScript */
+    transform-origin: center top; /* Asegurar que escala desde el centro superior */
+    transition: transform 0.3s ease; /* Transición suave al cambiar el tamaño */
     flex-shrink: 0;
-    overflow-x: hidden; /* Hide horizontal scrollbars */
 }
 
 .gameboy * {
@@ -44,6 +66,7 @@ body {
 }
 
 .front-plate {
+    margin-top: 6%;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -350,6 +373,31 @@ body {
     z-index: 1;
     box-shadow: inset 4px 6px 12px 2px rgba(0, 0, 0, 0.7);
     pointer-events: none;
+}
+
+/* Estilo para la imagen centrada en la pantalla */
+.game-image-centered {
+    display: block;
+    width: 80%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* Estilo para el texto del juego */
+.game-text {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 2;
 }
 
 .screen-container .battery-light {
@@ -1150,12 +1198,13 @@ body {
 
 .power-button {
     position: absolute;
-    top: -30px;
+    top: 0px;
     left: 68px;
     height: 30px;
     width: 50px;
     cursor: pointer;
     transition: left 0.25s ease-in;
+    display: none;
 }
 
 .power-on .power-button {
@@ -1174,7 +1223,7 @@ body {
 
 .game-container {
     width: 100%; 
-    height: 90dvh;
+    height: 100dvh;
     position: sticky;
     top: 10dvh;
     display: flex;
@@ -1192,5 +1241,61 @@ body {
 .game-container.hidden .game-canvas {
     opacity: 0;
 }
+.nft-menu-content{
+    justify-content: space-between;
+    width: 100dvw;
+    padding-inline: 30px;
+}
 
+.marketplace-container{
+    overflow-y: scroll;
+}
+
+
+
+.sidebar{
+    padding: 0px;
+    padding-inline:none;
+}
+
+.marketplace-container::-webkit-scrollbar{
+    display: none;
+}
+
+.text-up-game{
+    font-size: 1.5rem;
+    position: absolute;
+    top: -4dvh;
+    color: #fff;
+    width: 660px;
+}
+
+@media (max-width: 440px) {
+    .gameboy{
+        margin-right: 15dvw;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .card{
+            flex: 0 0 50%;
+                width: 50%;
+                max-width: 49%;
+    }
+}
+
+.img-screeen{
+    width: 80%;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+
+@media (max-width: 900px){
+    .gameboy{
+        margin-top: 100dvh;
+    }
+    
+}
 

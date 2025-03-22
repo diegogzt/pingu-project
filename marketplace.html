@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="static/css/header.css">
     <link rel="stylesheet" href="static/css/footer.css">
     <link rel="stylesheet" href="static/css/marketplace.css">
+    <link rel="stylesheet" href="static/css/m1.css">
     <link rel="stylesheet" href="static/css/m2.css">
     <link rel="stylesheet" href="static/css/m3-styles.css">
         <!-- FUENTES DE GOOGLE -->
@@ -35,7 +36,7 @@
                         <a href="marketplace.html" class="button button-text">
                             MARKETPLACE
                         </a>
-                        <a href="museum.html" class="button button-text">
+                    <a href="museum.html" class="button museo button-text">
                             MUSEUM
                         </a>
                     </div>
@@ -99,12 +100,12 @@
                         LIL PUDGYS
                     </h1>
                     <div class="container-change-collection">
-                        <select class="change-collection" title="Change Collection " placeholder="Change Collection">
+                        <select class="change-collection margin" title="Change Collection " placeholder="Change Collection">
                             <option class="option-disabled" disabled selected>Change Collection</option>
-                            <option value="lil-pudgys">Lil Pudgys (ETH)</option>
-                        <option value="cool-cats">Cool Cats (ETH)</option>
-                        <option value="bored-apes">Bored Apes (ETH)</option>
-                            <option value="crypto-punks">Crypto Punks (ETH)</option>
+                            <option value="lil-pudgys">Lil Pudgys</option>
+                        <option value="cool-cats">Cool Cats</option>
+                        <option value="bored-apes">Bored Apes</option>
+                            <option value="crypto-punks">Crypto Punks</option>
                         </select>            
                     </div>
                 </div>
@@ -385,7 +386,7 @@
                         <input type="text" class="search-bar" placeholder="Search By Token ID">
                     </div>
                 </div>
-                <div class="filter-container">
+                <div class="filter-container c2">
                     <select class="price-filter" title="Filter by price">
                         <option value="low">Price: Low to High</option>
                         <option value="high">Price: High to Low</option>
@@ -653,6 +654,7 @@
 
     <script src="static/js/marketplace.js"></script>
     <script src="static/js/cardGenerator.js"></script>
+    <script src="static/js/custom-select.js"></script>
 
     <!-- Modal de Filtros para móvil -->
     <div id="filters-modal" class="filters-modal">

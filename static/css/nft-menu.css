@@ -15,11 +15,29 @@
 }
 
 .container-button{
-    background-color: #00ff00;
     position: absolute;
+    right: 15px;
+    top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.close-menu-btn {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    border: 2px solid #00ff00;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-family: var(--pixel);
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-menu-btn:hover {
+    background-color: #00ff00;
+    color: #000000;
 }
 
 /* Estilos para el menú NFT */
@@ -200,8 +218,8 @@
     height: 18px;
     border: 1px solid var(--border-color);
     border-radius: 2px;
-    appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     background-color: transparent;
     position: relative;
     cursor: pointer;
@@ -304,7 +322,6 @@
         width: 100%;
         min-width: 100%;
         height: auto;
-        min-height: auto;
         padding: 10px;
     }
     

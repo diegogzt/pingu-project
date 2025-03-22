@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="static/css/nft-menu.css">
     <link rel="stylesheet" href="static/css/select-button.css">
     <link rel="stylesheet" href="static/css/card-styles.css">
+    <link rel="stylesheet" href="static/css/side-elements.css">
+    <!-- Side elements now always visible without modal -->
+    <link rel="stylesheet" href="static/css/sidebar-modal.css">
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +41,7 @@
                 <a href="marketplace.html" class="button button-text">
                     MARKETPLACE
                 </a>
-                <a href="museum.html" class="button button-text">
+                    <a href="museum.html" class="button museo button-text">
                     MUSEUM
                 </a>
                 <div class="container-buttons-links">
@@ -189,7 +192,36 @@
     
     <!-- Contenido principal -->
     <main class="game-container">
+        
         <div class="gameboy">
+            <h4 class="text-up-game">(esto es un texto de prueba)</h4>
+            <!-- Elementos circulares verdes siempre visibles al lado de la gameboy -->
+            <div class="side-elements">
+                <div class="container-button-game">
+                    <div class="circle-element battery-circle">
+                        <img class="image-item" src="static/img/doge-logo.png" alt="Batería">
+                    </div>
+                    <div class="circle-element-2 text-circle">
+                        <span>texto</span>
+                    </div>
+                </div>
+                <div class="container-button-game">
+                    <div class="circle-element battery-circle">
+                        <img class="image-item" src="static/img/doge-logo.png" alt="Batería">
+                    </div>
+                    <div class="circle-element-2 text-circle">
+                        <span>texto</span>
+                    </div>
+                </div>
+                <div class="container-button-game">
+                    <div class="circle-element battery-circle">
+                        <img class="image-item" src="static/img/doge-logo.png" alt="Batería">
+                    </div>
+                    <div class="circle-element-2 text-circle">
+                        <span>texto</span>
+                    </div>
+                </div>
+            </div>
             <div class="front-plate">
                 <div class="front-plate-head">
                     <div class="vertical-stripe"></div>
@@ -224,9 +256,9 @@
                     </div>
 
                     <div class="screen">
-                        <!-- Contenido del juego/imagen -->
-                        <img src="static/img/penguin-game.png" alt="Penguin Game" class="game-image">
-                        <div class="game-text"><Texto hasta aquí></div>
+                        <!-- Imagen centrada simple -->
+                        <img class="img-screeen" src="static/img/doge-logo.png" alt="Doge Logo" class="game-image-centered">
+                        <div class="game-text">Presiona SELECT para el menú</div>
                     </div>
                 </div>
 
@@ -335,15 +367,15 @@
                 <h3 class="nft-menu-subtitle">¿QUIÉN ES EL ELEGIDO DE HOY?</h3>
             </div>
             <!-- Botón para cerrar el menú -->
-             <!-- <div class="container-button">
-                 <button id="close-nft-menu" class="close-menu-btn">
-                     <i class="fas fa-times"></i> Volver al juego
-                    </button>
-                </div> -->
+            <div class="container-button">
+                <button id="close-nft-menu" class="close-menu-btn" title="Volver al juego">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
         <div class="nft-menu-content">
             <div class="sidebar">
-                <div class="sidebar-content">
+                <div class="sidebar-content" id="sidebar-content">
                     <h2 class="sidebar-title">Chose your NFT</h2>
                     
                     <div class="sidebar-search">
@@ -390,12 +422,28 @@
                         <button class="reload-button">RECARGAR TODO</button>
                     </div>
                 </div>
+                
+                <!-- Botón para abrir el modal en pantallas medianas -->
+                <button id="sidebar-toggle-btn" class="sidebar-toggle-btn" title="Filter Options">
+                    <i class="fas fa-filter"></i>
+                </button>
             </div>
             <div id="nft-cards-container" class="marketplace-container"></div>
         </div>
     </div>
 
     </div>
+    
+    <!-- Modal para el contenido del sidebar -->
+    <div id="sidebar-content-modal" class="sidebar-content-modal">
+        <div class="sidebar-content-modal-inner">
+            <button class="close-sidebar-modal">&times;</button>
+            <!-- El contenido se copiará dinámicamente desde el sidebar original -->
+        </div>
+    </div>
+    
+    <!-- Los elementos laterales ahora siempre están visibles al lado de la gameboy -->
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
@@ -410,9 +458,9 @@
             </div>
             
             <div class="footer-social">
-                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" title="Discord"><i class="fab fa-discord"></i><span class="sr-only">Discord</span></a>
+                <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+                <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -425,6 +473,8 @@
     <script src="static/js/play.js"></script>
     <script src="static/js/cardGenerator.js"></script>
     <script src="static/js/nftContainerLoader.js"></script>
+    <!-- No modal script needed as side elements are always visible -->
+    <script src="static/js/sidebar-modal.js"></script>
 </body>
 
 </html>

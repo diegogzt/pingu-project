@@ -1,5 +1,26 @@
 // JavaScript para la página de juego
 document.addEventListener('DOMContentLoaded', function() {
+    // Función para ajustar el tamaño del GameBoy según el ancho de la pantalla
+    function adjustGameboySize() {
+        const gameboy = document.querySelector('.gameboy');
+        if (!gameboy) return;
+        
+        // Verificar si la pantalla es menor a 900px
+        if (window.innerWidth < 900) {
+            // Hacer el GameBoy un 20% más pequeño (scale 0.4 en lugar de 0.5)
+            gameboy.style.transform = 'scale(0.4)';
+        } else {
+            // Restaurar el tamaño original
+            gameboy.style.transform = 'scale(0.5)';
+        }
+    }
+    
+    // Ajustar el tamaño al cargar la página
+    adjustGameboySize();
+    
+    // Ajustar el tamaño cuando cambie el tamaño de la ventana
+    window.addEventListener('resize', adjustGameboySize);
+    
     // Referencias a elementos
     const btnUp = document.getElementById('btn-up');
     const btnDown = document.getElementById('btn-down');

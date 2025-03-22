@@ -106,6 +106,7 @@ function createCardElement(cardData) {
     
     // Añadir el precio como texto
     const priceText = document.createElement('span');
+    priceContainer.className = ('price-card');
     priceText.textContent = cardData.price;
     priceContainer.appendChild(priceText);
     
@@ -151,6 +152,32 @@ function createCardElement(cardData) {
     
     card.appendChild(cardImage);
     card.appendChild(cardInfo);
+    
+    // Añadir click event para redirigir a la página de producto
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (event) => {
+        // Evitar que el evento se dispare cuando se hace clic en los botones
+        if (event.target.tagName === 'BUTTON' || event.target.parentElement.tagName === 'BUTTON') {
+            return;
+        }
+        
+        // Depurar el ID que estamos pasando
+        console.log('Redirigiendo a producto con ID:', cardData.id);
+        
+        // Almacenar en localStorage como respaldo por si se pierde el parámetro de URL
+        localStorage.setItem('selectedCardId', cardData.id);
+        
+        // Redirigir a la página de producto con el ID como parámetro
+        window.location.href = `product.html?id=${encodeURIComponent(cardData.id)}`;
+    });
+    
+    // Evitar que los clics en los botones de compra/añadir redirijan a la página de producto
+    const preventRedirectButtons = card.querySelectorAll('.buy-btn, .add-btn');
+    preventRedirectButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.stopPropagation(); // Evitar que el evento se propague al elemento padre (card)
+        });
+    });
     
     return card;
 }

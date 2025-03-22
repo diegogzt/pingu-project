@@ -1,0 +1,106 @@
+/* Estilos para el sidebar modal en play.html */
+
+/* Modal para mostrar el contenido de la sidebar */
+.sidebar-content-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animaciones para el modal */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Contenido del modal */
+.sidebar-content-modal-inner {
+    position: relative;
+    background-color: var(--background-color, #fff);
+    margin: 5% auto;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    /* Heredar estilos de la sidebar original */
+    font-family: inherit;
+    color: inherit;
+}
+
+/* Botón para cerrar el modal */
+.close-sidebar-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.close-sidebar-modal:hover {
+    transform: scale(1.1);
+}
+
+/* Botón para abrir el modal */
+.sidebar-toggle-btn {
+    display: none; /* Se mostrará solo en media queries */
+    position: fixed;
+    bottom: 20px;
+    right: 85px; /* Posicionado a la derecha del otro botón flotante */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #8BA0FF;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 900;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Clase para mostrar el modal */
+.sidebar-content-modal.show {
+    display: block;
+}
+
+/* Clase para animar la salida del modal */
+.sidebar-content-modal.hide {
+    animation: fadeOut 0.3s ease-in-out;
+}
+
+/* Estilos responsivos */
+@media (max-width: 1200px) {
+    /* Mostrar el botón en pantallas medianas */
+    .sidebar-toggle-btn {
+        display: flex;
+    }
+    
+    /* Cuando está en modo botón, ocultar la sidebar original */
+    .sidebar-content.button-mode {
+        display: none;
+    }
+}

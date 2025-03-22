@@ -14,6 +14,7 @@ footer {
     margin-top: 0px;
 }
 
+/* Estilo para site-footer con variables responsivas */
 .site-footer {
     background-color: #3333333c;
     color: #fff;
@@ -21,7 +22,7 @@ footer {
     padding: 20px 0;
     border-top: 1px solid white;
     font-family: 'Press Start 2P', cursive; /* Usa la fuente de Google */
-    font-size: x-small;
+    font-size: var(--font-size-xsmall);
 }
     
 .footer-content {
@@ -89,10 +90,11 @@ footer {
     align-items: center;
 }
 
+/* Footer link con tamaño de fuente responsivo usando variables */
 .footer-link {
     color: #fff;
     text-decoration: none;
-    font-size: 12px;
+    font-size: var(--font-size-xsmall); /* Variable para pantallas pequeñas */
     transition: color 0.3s;
     letter-spacing: 1px;
     padding: 8px;
@@ -102,9 +104,10 @@ footer {
     color: #f39c12;
 }
 
+/* Separator para items del footer */
 .footer-separator {
     color: #444;
-    font-size: 12px;
+    font-size: var(--font-size-xsmall);
 }
 
 .footer-social {
@@ -114,9 +117,10 @@ footer {
     margin: 15px 0;
 }
 
+/* Iconos sociales en el footer */
 .social-icon {
     color: #fff;
-    font-size: 18px;
+    font-size: 18px; /* Mantiene tamaño fijo para iconos */
     transition: transform 0.3s, color 0.3s;
     display: flex;
     align-items: center;
@@ -138,9 +142,10 @@ footer {
     padding-top: 15px;
 }
 
+/* Texto del footer bottom */
 .footer-bottom p {
     color: #666;
-    font-size: 10px;
+    font-size: var(--font-size-xsmall);
     margin: 0;
     line-height: 1.5;
 }
@@ -157,16 +162,18 @@ footer {
         margin: 0;
     }
     
+    /* Links del footer en pantallas medianas */
     .footer-link {
-        font-size: 14px;
+        font-size: var(--font-size-small);
     }
     
+    /* Párrafos del footer en pantallas medianas */
     .footer-bottom p {
-        font-size: 12px;
+        font-size: var(--font-size-small);
     }
 }
 
-/* Ajustes para pantallas muy pequeñas */
+/* Ajustes para pantallas muy pequeñas (móviles) */
 @media (max-width: 480px) {
     .footer {
         padding: 20px 0;
@@ -183,6 +190,12 @@ footer {
     
     .footer-link {
         padding: 5px;
+        /* Usa la variable para pantallas extra pequeñas */
+        font-size: var(--font-size-xsmall);
+    }
+    
+    .footer-separator {
+        font-size: var(--font-size-xsmall);
     }
     
     .social-icon {
@@ -192,5 +205,9 @@ footer {
     
     .footer-social {
         gap: 15px;
+    }
+    
+    .footer-bottom p {
+        font-size: var(--font-size-xsmall);
     }
 }

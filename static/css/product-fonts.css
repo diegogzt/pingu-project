@@ -1,0 +1,89 @@
+/* Ajustes de fuente para la página product usando la fuente pixel */
+
+:root {
+    --pixel: 'Press Start 2P', cursive;
+}
+
+/* Aplicamos la fuente pixel a todo el contenedor manteniendo proporciones */
+.product-container * {
+    font-family: var(--pixel);
+}
+
+/* Ajustamos los tamaños específicos respetando las proporciones originales */
+.product-container h1 {
+    /* Reducimos aproximadamente un 20% del tamaño original */
+    font-size: calc(2rem * 0.8);
+}
+
+.product-container h2 {
+    font-size: calc(1.5rem * 0.8);
+}
+
+.product-container h3 {
+    font-size: calc(1.25rem * 0.8);
+}
+
+.product-container p,
+.product-container span {
+    font-size: calc(1rem * 0.8);
+}
+
+/* Tamaños específicos para elementos concretos */
+.product-details .title {
+    font-size: calc(1.8rem * 0.8);
+}
+
+.product-details .price {
+    font-size: calc(1.5rem * 0.8);
+}
+
+.product-details .description {
+    font-size: calc(1rem * 0.8);
+}
+
+.product-actions button {
+    font-size: calc(1rem * 0.8);
+}
+
+.tab-button {
+    font-size: calc(1.1rem * 0.8);
+}
+
+.property-item span,
+.card-id, 
+.card-rarity,
+.card-stats,
+.stat {
+    font-size: calc(0.9rem * 0.8);
+}
+
+.related-products h2 {
+    font-size: calc(1.5rem * 0.8);
+}
+
+.activity-section h2, 
+.offers-section h2 {
+    font-size: calc(1.5rem * 0.8);
+}
+
+.activity-table th,
+.activity-table td,
+.offers-table th,
+.offers-table td {
+    font-size: calc(0.9rem * 0.8);
+}
+
+/* Ajustar tamaños para diferentes pantallas */
+@media (max-width: 768px) {
+    .product-details .title {
+        font-size: calc(1.5rem * 0.8);
+    }
+    
+    .product-details .price {
+        font-size: calc(1.3rem * 0.8);
+    }
+    
+    .product-details .description {
+        font-size: calc(0.9rem * 0.8);
+    }
+}

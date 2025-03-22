@@ -1,3 +1,12 @@
+// Objeto para almacenar los filtros activos
+let activeFilters = {
+    priceMin: null,
+    priceMax: null,
+    categories: [],
+    rarities: [],
+    stats: []
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // Cambiar el número de columnas del grid (ahora flex)
     document.querySelectorAll('.grid-btn').forEach(button => {
@@ -15,15 +24,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateMarketItemClasses('two-columns');
                 // Aplicar modo de 2 cartas por fila
                 applyTwoCardsStyle();
+                // Añadir clase m1-active al body para aplicar estilos CSS específicos
+                document.body.classList.add('m1-active');
             } else if (columns === "2") {
                 updateMarketItemClasses('four-columns');
                 // Restaurar estilos originales
                 resetCardStyles();
+                // Remover clase m1-active del body al cambiar de vista
+                document.body.classList.remove('m1-active');
             } else if (columns === "3") {
                 updateMarketItemClasses('six-columns');
+                // Remover clase m1-active del body al cambiar de vista
+                document.body.classList.remove('m1-active');
             }
         });
     });
+    
+    // Inicializar filtros
+    setupFilters();
 
     // Manejar el clic en el botón "m2" para establecer el estilo por defecto
     const m2Button = document.getElementById('m2');
@@ -462,46 +480,132 @@ function adjustCardStyles() {
 
 // Función para aplicar el estilo de 2 cartas por fila (m1)
 function applyTwoCardsStyle() {
+    // Ahora la mayor parte de los estilos se aplican mediante CSS
+    // con la clase m1-active en el elemento body
+    
     const cards = document.querySelectorAll('.card');
     
     cards.forEach(card => {
-        // Ajustar tamaños para mostrar solo 2 cartas por fila
-        card.style.flexBasis = '48%';
-        card.style.width = '48%';
-        card.style.maxWidth = '48%';
-        card.style.aspectRatio = '0.7/1';
-        
         // Mantener la información visible (a diferencia de m3)
         const cardStats = card.querySelector('.card-stats');
         const cardActions = card.querySelector('.card-actions');
         
         if (cardStats) cardStats.style.display = 'flex';
         if (cardActions) cardActions.style.display = 'flex';
+        ajustarAlturaCardsM1()
     });
+    
 }
 
 // Función para restaurar los estilos originales de las cartas
 function resetCardStyles() {
     const cards = document.querySelectorAll('.card');
     
+    // Eliminar la clase m1-active del body para desactivar los estilos de m1.css
+    document.body.classList.remove('m1-active');
+    
     cards.forEach(card => {
         // Restaurar tamaños originales
         card.style.flexBasis = '';
         card.style.width = '';
         card.style.maxWidth = '';
+        card.style.minWidth = '';
+        card.style.height = '';
+        card.style.minHeight = '';
+        card.style.maxHeight = '';
         card.style.aspectRatio = '';
+        card.style.display = '';
+        card.style.flexDirection = '';
         
-        // Asegurar que la información y acciones están visibles
+        // Restaurar tamaños de fuente originales
+        const cardId = card.querySelector('.card-id');
+        const cardRarity = card.querySelector('.card-rarity');
         const cardStats = card.querySelector('.card-stats');
+        const cardNumber = card.querySelector('.card-number');
+        const buyBtn = card.querySelector('.buy-btn');
+        const addBtn = card.querySelector('.add-btn');
+        const cardImage = card.querySelector('.card-image');
+        const cardInfo = card.querySelector('.card-info');
+        const cardHeader = card.querySelector('.card-header');
         const cardActions = card.querySelector('.card-actions');
         
-        if (cardStats) cardStats.style.display = 'flex';
+        // Restaurar componentes principales de la carta
+        if (cardImage) {
+            cardImage.style.height = '';
+            cardImage.style.minHeight = '';
+            cardImage.style.maxHeight = '';
+            cardImage.style.overflow = '';
+            cardImage.style.display = '';
+            cardImage.style.alignItems = '';
+            cardImage.style.justifyContent = '';
+            
+            // Restaurar imagen
+            const img = cardImage.querySelector('img.image');
+            if (img) {
+                img.style.width = '';
+                img.style.height = '';
+                img.style.objectFit = '';
+                img.style.objectPosition = '';
+                img.style.maxWidth = '';
+            }
+        }
+        
+        // Restaurar footer de la carta
+        if (cardInfo) {
+            cardInfo.style.height = '';
+            cardInfo.style.minHeight = '';
+            cardInfo.style.maxHeight = '';
+            cardInfo.style.overflow = '';
+            cardInfo.style.padding = '';
+            cardInfo.style.display = '';
+            cardInfo.style.flexDirection = '';
+            cardInfo.style.justifyContent = '';
+        }
+        
+        // Restaurar elementos del footer
+        if (cardHeader) cardHeader.style.marginBottom = '';
+        if (cardStats) {
+            cardStats.style.display = 'flex';
+            cardStats.style.marginBottom = '';
+            cardStats.style.fontSize = '';
+        }
+        if (cardNumber) cardNumber.style.marginBottom = '';
+        
+        // Limpiar los estilos inline para restaurar a los valores del CSS
+        if (cardId) cardId.style.fontSize = '';
+        if (cardRarity) cardRarity.style.fontSize = '';
+        if (buyBtn) buyBtn.style.fontSize = '';
+        if (addBtn) addBtn.style.fontSize = '';
+        
+        // Restaurar tamaño de los iconos
+        const icons = card.querySelectorAll('.heart-icon, .lightning-icon, .ghost-icon, .sword-icon, .currency-icon');
+        icons.forEach(icon => {
+            if (icon.classList.contains('currency-icon')) {
+                icon.style.width = '';
+                icon.style.height = '';
+            } else {
+                icon.style.fontSize = '';
+            }
+        });
+        
+        // Asegurar que la información y acciones están visibles
         if (cardActions) cardActions.style.display = 'flex';
     });
+    
+    // Aplicar reajuste de altura después de resetear los estilos
+    setTimeout(() => {
+        ajustarAlturaCards();
+        window.dispatchEvent(new Event('resize'));
+    }, 100);
 }
 
 // Función para ajustar la altura de las tarjetas basada en su ancho
 function ajustarAlturaCards() {
+    // Si m1 está activo, no aplicar esta función
+    if (document.body.classList.contains('m1-active')) {
+        return;
+    }
+    
     // Seleccionar todas las tarjetas
     const cards = document.querySelectorAll('.card');
     
@@ -517,11 +621,44 @@ function ajustarAlturaCards() {
     });
 }
 
+function ajustarAlturaCardsM1() {
+    // Seleccionar todas las tarjetas
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        // Obtener el ancho actual de la tarjeta
+        const cardWidth = card.offsetWidth;
+
+        // Calcular la altura (ancho + 30% del ancho)
+        const cardHeight = cardWidth + (cardWidth * 0.3);
+
+        // Aplicar la altura calculada
+        card.style.height = `${cardHeight}px`;
+    });
+}
+
 // Ejecutar la función cuando se carga la página
-window.addEventListener('load', ajustarAlturaCards);
+window.addEventListener('load', function() {
+    // Si m1 está activo, ajustar las cartas con ajustarAlturaCardsM1
+    if (document.body.classList.contains('m1-active')) {
+        ajustarAlturaCardsM1();
+    } else {
+        // Si no, usar el ajuste normal
+        ajustarAlturaCards();
+    }
+});
 
 // Ejecutar la función cuando se redimensiona la ventana
-window.addEventListener('resize', ajustarAlturaCards);
+window.addEventListener('resize', function() {
+    // Si m1 está activo, ajustar las cartas con ajustarAlturaCardsM1
+    if (document.body.classList.contains('m1-active')) {
+        ajustarAlturaCardsM1();
+    } else {
+        // Si no, usar el ajuste normal
+        ajustarAlturaCards();
+    }
+});
+
 
 // Funcionalidad para el botón de filtros móvil y el modal
 function setupFiltersModal() {
@@ -562,6 +699,344 @@ function setupFiltersModal() {
 
 // Ejecutar la configuración del modal de filtros cuando se carga la página
 document.addEventListener('DOMContentLoaded', setupFiltersModal);
+
+// Función para configurar todos los filtros
+function setupFilters() {
+    // Filtro de rango de precios
+    setupPriceRangeFilter();
+    
+    // Filtro de categorías (PP0, PP1, PP2)
+    setupCategoryFilter();
+    
+    // Filtro de rarezas (Legendary, Mythic, Rare, Common)
+    setupRarityFilter();
+    
+    // Filtro de estadísticas
+    setupStatsFilter();
+    
+    // Filtro de propiedades
+    setupPropertiesFilter();
+}
+
+// Configuración del filtro de rango de precios
+function setupPriceRangeFilter() {
+    // Obtener todos los inputs de precio mínimo y máximo (tanto en sidebar como en modal)
+    const minPriceInputs = document.querySelectorAll('#price-range');
+    const maxPriceInputs = document.querySelectorAll('#price-range-max');
+    
+    // Configurar evento input para precio mínimo
+    minPriceInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            const value = parseFloat(this.value);
+            activeFilters.priceMin = isNaN(value) ? null : value;
+            
+            // Sincronizar valores entre todos los inputs de precio mínimo
+            minPriceInputs.forEach(otherInput => {
+                if (otherInput !== this) {
+                    otherInput.value = this.value;
+                }
+            });
+            
+            applyFilters();
+        });
+    });
+    
+    // Configurar evento input para precio máximo
+    maxPriceInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            const value = parseFloat(this.value);
+            activeFilters.priceMax = isNaN(value) ? null : value;
+            
+            // Sincronizar valores entre todos los inputs de precio máximo
+            maxPriceInputs.forEach(otherInput => {
+                if (otherInput !== this) {
+                    otherInput.value = this.value;
+                }
+            });
+            
+            applyFilters();
+        });
+    });
+}
+
+// Configuración del filtro de categorías
+function setupCategoryFilter() {
+    // Asignar IDs a los checkboxes de categoría para poder identificarlos
+    const categoryLabels = document.querySelectorAll('.section-category .label-category');
+    categoryLabels.forEach(label => {
+        const checkbox = label.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+            // Asignar ID al checkbox basado en el ID del label (pp0, pp1, pp2)
+            checkbox.id = 'checkbox-' + label.id;
+            
+            // Añadir evento change
+            checkbox.addEventListener('change', function() {
+                const category = label.id;
+                
+                if (this.checked) {
+                    // Añadir categoría a los filtros activos si no está ya
+                    if (!activeFilters.categories.includes(category)) {
+                        activeFilters.categories.push(category);
+                    }
+                } else {
+                    // Eliminar categoría de los filtros activos
+                    activeFilters.categories = activeFilters.categories.filter(cat => cat !== category);
+                }
+                
+                // Sincronizar el estado del checkbox con su contraparte en el otro menú
+                syncCheckboxState('checkbox-' + category, this.checked);
+                
+                applyFilters();
+            });
+        }
+    });
+}
+
+// Configuración del filtro de rarezas
+function setupRarityFilter() {
+    // Asignar IDs a los checkboxes de rareza para poder identificarlos
+    const rarityLabels = document.querySelectorAll('#rarity ~ .section-content .label-category');
+    rarityLabels.forEach(label => {
+        const checkbox = label.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+            // Asignar ID al checkbox basado en el ID del label (legendary, mythic, etc.)
+            checkbox.id = 'checkbox-' + label.id;
+            
+            // Añadir evento change
+            checkbox.addEventListener('change', function() {
+                const rarity = label.id;
+                
+                if (this.checked) {
+                    // Añadir rareza a los filtros activos si no está ya
+                    if (!activeFilters.rarities.includes(rarity)) {
+                        activeFilters.rarities.push(rarity);
+                    }
+                } else {
+                    // Eliminar rareza de los filtros activos
+                    activeFilters.rarities = activeFilters.rarities.filter(r => r !== rarity);
+                }
+                
+                // Sincronizar el estado del checkbox con su contraparte en el otro menú
+                syncCheckboxState('checkbox-' + rarity, this.checked);
+                
+                applyFilters();
+            });
+        }
+    });
+}
+
+// Configuración del filtro de estadísticas
+function setupStatsFilter() {
+    // Encontrar la sección de estadísticas de manera más compatible con todos los navegadores
+    const statsSections = Array.from(document.querySelectorAll('.section')).filter(section => {
+        const title = section.querySelector('.section-title');
+        return title && title.textContent.trim() === 'Stats';
+    });
+    
+    statsSections.forEach(section => {
+        const statsLabels = section.querySelectorAll('.label-category.icons');
+        
+        statsLabels.forEach((label, index) => {
+            // Asignar ID a cada label de estadística si no tiene uno
+            if (!label.id) {
+                label.id = 'stat-' + index;
+            }
+            
+            // Crear checkbox para cada estadística si no existe
+            if (!label.querySelector('input[type="checkbox"]')) {
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.className = 'input-category';
+                checkbox.id = 'checkbox-' + label.id;
+                label.appendChild(checkbox);
+            }
+            
+            const checkbox = label.querySelector('input[type="checkbox"]');
+            // Añadir evento change
+            checkbox.addEventListener('change', function() {
+                const statId = label.id;
+                const statType = getStatTypeFromImage(label.querySelector('img').src);
+                
+                if (this.checked) {
+                    // Añadir estadística a los filtros activos
+                    if (!activeFilters.stats.includes(statType)) {
+                        activeFilters.stats.push(statType);
+                    }
+                } else {
+                    // Eliminar estadística de los filtros activos
+                    activeFilters.stats = activeFilters.stats.filter(stat => stat !== statType);
+                }
+                
+                // Sincronizar checkbox en todos los menús
+                syncCheckboxState('checkbox-' + statId, this.checked);
+                
+                applyFilters();
+            });
+        });
+    });
+}
+
+// Función para obtener el tipo de estadística a partir de la imagen
+function getStatTypeFromImage(imageSrc) {
+    if (imageSrc.includes('shield.png')) return 'heart';
+    if (imageSrc.includes('energy.png')) return 'lightning';
+    if (imageSrc.includes('life.png')) return 'ghost';
+    if (imageSrc.includes('X.png')) return 'sword';
+    return null;
+}
+
+// Configuración del filtro de propiedades
+function setupPropertiesFilter() {
+    // Obtener todas las propiedades (details > summary)
+    const properties = document.querySelectorAll('details');
+    
+    properties.forEach(property => {
+        const propertyName = property.querySelector('summary').textContent.trim();
+        
+        // Configurar los checkboxes dentro de cada propiedad
+        const propertyOptions = property.querySelectorAll('.label-sumary');
+        propertyOptions.forEach(option => {
+            const optionText = option.textContent.trim().split(' ')[0]; // Obtener el texto del label sin el espacio y 'input'
+            const checkbox = option.querySelector('input[type="checkbox"]');
+            
+            // Asignar ID único al checkbox
+            const checkboxId = `property-${propertyName.toLowerCase()}-${optionText.toLowerCase()}`;
+            checkbox.id = checkboxId;
+            
+            // Añadir evento change
+            checkbox.addEventListener('change', function() {
+                // No necesitamos almacenar estas propiedades en activeFilters
+                // ya que usaremos los IDs directamente
+                
+                // Sincronizar el estado del checkbox con su contraparte en el otro menú
+                syncCheckboxState(checkboxId, this.checked);
+                
+                applyFilters();
+            });
+        });
+    });
+}
+
+// Sincronizar el estado de los checkboxes entre la sidebar y el modal
+function syncCheckboxState(checkboxId, isChecked) {
+    // Obtener todos los checkboxes con el mismo ID
+    const checkboxes = document.querySelectorAll(`#${checkboxId}`);
+    
+    // Actualizar su estado
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = isChecked;
+    });
+}
+
+// Función principal para aplicar todos los filtros
+function applyFilters() {
+    // Obtener todas las cartas
+    const cards = document.querySelectorAll('.card');
+    
+    // Verificar cada carta contra los filtros activos
+    cards.forEach(card => {
+        let showCard = true;
+        
+        // 1. Filtro de precio
+        if (activeFilters.priceMin !== null || activeFilters.priceMax !== null) {
+            // Buscar el precio dentro del price-container usando la estructura real de las cartas
+            const priceContainer = card.querySelector('.price-container');
+            if (priceContainer) {
+                // El precio está en el primer span dentro del price-container
+                const priceElement = priceContainer.querySelector('span');
+                if (priceElement) {
+                    const price = parseFloat(priceElement.textContent.trim());
+                    
+                    if (!isNaN(price)) { // Verificar que el precio sea un número válido
+                        if (activeFilters.priceMin !== null && price < activeFilters.priceMin) {
+                            showCard = false;
+                        }
+                        
+                        if (activeFilters.priceMax !== null && price > activeFilters.priceMax) {
+                            showCard = false;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 2. Filtro de rareza
+        if (activeFilters.rarities.length > 0) {
+            const cardHeader = card.querySelector('.card-header');
+            let cardRarity = '';
+            
+            // Determinar rareza por el id del header o por las clases de la carta
+            if (cardHeader && cardHeader.id) {
+                if (cardHeader.id === 'common2') {
+                    // Corregir la discrepancia entre common2 y common
+                    cardRarity = 'common';
+                } else {
+                    cardRarity = cardHeader.id;
+                }
+            } else if (card.classList.contains('legendary-card')) {
+                cardRarity = 'legendary';
+            } else if (card.classList.contains('mythic-card')) {
+                cardRarity = 'mythic';
+            } else if (card.classList.contains('rare-card')) {
+                cardRarity = 'rare';
+            } else if (card.classList.contains('common-card')) {
+                cardRarity = 'common';
+            }
+            
+            if (!activeFilters.rarities.includes(cardRarity)) {
+                showCard = false;
+            }
+        }
+        
+        // 3. Filtro de estadísticas
+        if (activeFilters.stats.length > 0) {
+            const cardStats = card.querySelector('.card-stats');
+            if (cardStats) {
+                let hasRequiredStats = true;
+                
+                activeFilters.stats.forEach(statType => {
+                    let statElement;
+                    
+                    switch(statType) {
+                        case 'heart':
+                            statElement = cardStats.querySelector('.heart-icon');
+                            break;
+                        case 'lightning':
+                            statElement = cardStats.querySelector('.lightning-icon');
+                            break;
+                        case 'ghost':
+                            statElement = cardStats.querySelector('.ghost-icon');
+                            break;
+                        case 'sword':
+                            statElement = cardStats.querySelector('.sword-icon');
+                            break;
+                    }
+                    
+                    if (!statElement || !statElement.closest('.stat')) {
+                        hasRequiredStats = false;
+                    }
+                });
+                
+                if (!hasRequiredStats) {
+                    showCard = false;
+                }
+            } else {
+                showCard = false;
+            }
+        }
+        
+        // Mostrar u ocultar la carta según el resultado del filtrado
+        card.style.display = showCard ? '' : 'none';
+    });
+    
+    // Mostrar mensaje si no hay resultados
+    const visibleCards = document.querySelectorAll('.card[style=""], .card:not([style*="display: none"])');
+    if (visibleCards.length === 0) {
+        showNoResultsMessage();
+    } else {
+        removeNoResultsMessage();
+    }
+}
 
 // Función para configurar la estructura de los summaries con barras de búsqueda
 function setupDetailsSummaries() {

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Pingu Project</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <link rel="stylesheet" href="static/css/product.css">
+    <link rel="stylesheet" href="static/css/product-fonts.css">
+    <!-- FUENTES DE GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!---------------------------------------------------------------->
+    <link rel="icon" type="image/png" href="static/img/doge-logo.png" />
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/c704d5f021.js" crossorigin="anonymous"></script>
+        <header>
+            <a href="index.html" id="link-index">
+                <img src="static/img/doge-logo.png" alt="doge logo" class="logo">
+                <div class="logo-and-tittle">
+                    <h1 class="tittle">Doge coin</h1>
+                </div>
+            </a>
+            <div class="container-menu">
+                <nav class="nav-menu" id="nav-menu">
+                    <div class="container-header-left">
+                        <a href="play.html" class="button button-text play">
+                            PLAY
+                        </a>
+                        <a href="marketplace.html" class="button button-text">
+                            MARKETPLACE
+                        </a>
+                        <a href="museum.html" class="button museo button-text">
+                            MUSEUM
+                        </a>
+                    </div>
+                    <div class="container-buttons-links">
+        
+                        <a href="cart.html" class="button button-link">
+                            <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+                        </a>
+                        <a href="settings.html" class="button button-link">
+                            <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+                        </a>
+                        <a href="wallet.html" class="button button-link car">
+                            <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+                        </a>
+        
+                    </div>
+                </nav>
+                <div class="menu-toggle" id="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        
+            <script>
+                document.getElementById('menu-toggle').addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    document.getElementById('nav-menu').classList.toggle('active');
+                });
+            </script>
+        
+            <div class="links">
+                <a href="play.html" class="button button-text play">
+                    PLAY
+                </a>
+                <a href="marketplace.html" class="button button-text">
+                    MARKETPLACE
+                </a>
+                <a href="museum.html" class="button button-text">
+                    MUSEUM
+                </a>
+                <a href="cart.html" class="button button-link">
+                    <img src="static/img/carticon.png" class="img-button-link-header" alt="car icon">
+                </a>
+                <a href="settings.html" class="button button-link">
+                    <img src="static/img/worldicon.png" class="img-button-link-header" alt="world icon">
+                </a>
+                <a href="wallet.html" class="button button-link car">
+                    <img src="static/img/walleticon.png" class="img-button-link-header" alt="wallet icon">
+                </a>
+            </div>
+        </header>
+
+    <main class="product-container">
+        <div class="product-wrapper">
+            <!-- Lado izquierdo - Imagen del producto -->
+            <div class="product-image-container">
+                <img src="" alt="Product Image" id="product-image" class="product-image">
+            </div>
+            
+            <!-- Lado derecho - Información del producto -->
+            <div class="product-info-container">
+                <!-- Título del producto -->
+                <div class="product-title-section">
+                    <h1 id="product-title">Pudgy Pengu #<span id="product-id">3463</span></h1>
+                    <div class="product-subtitle">
+                        <span id="product-collection">Pudgy pengu</span>
+                    </div>
+                    <div class="product-owner">
+                        <div class="owner-avatar"></div>
+                        <span>Owned by <span id="product-owner">zerc</span></span>
+                    </div>
+                </div>
+                
+                <!-- Precio del producto -->
+                <div class="product-price-section">
+                    <div class="current-price">
+                        <span id="product-price">10.5987</span>
+                        <span class="currency">($221543)</span>
+                    </div>
+                    
+                    <!-- Botones de acción -->
+                    <div class="product-actions">
+                        <button class="buy-now-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            Buy Now
+                        </button>
+                        <button class="cart-btn" title="Añadir al carrito">
+                            <i class="fas fa-cart-plus"></i>
+                            <span class="sr-only">Añadir al carrito</span>
+                        </button>
+                        <button class="offer-btn">
+                            Make an Offer
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Historial de actividad -->
+                <div class="activity-section">
+                    <h2>Activity</h2>
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Price</th>
+                                <th>Royalties</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activity-table-body">
+                            <tr>
+                                <td>Bid Taken</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Bid Taken</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Sale</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Sale</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Ofertas -->
+                <div class="offers-section">
+                    <h2>Offers</h2>
+                    <table class="offers-table">
+                        <thead>
+                            <tr>
+                                <th>Price</th>
+                                <th>By</th>
+                                <th>Expires</th>
+                            </tr>
+                        </thead>
+                        <tbody id="offers-table-body">
+                            <!-- Las ofertas se cargarán dinámicamente si existen -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Características del producto -->
+        <div class="product-traits-section">
+            <div class="traits-tabs">
+                <button class="tab-button active" data-tab="traits">Traits</button>
+                <button class="tab-button" data-tab="info">Info</button>
+            </div>
+            
+            <div class="tab-content active" id="traits-content">
+                <div class="traits-grid">
+                    <div class="trait-item">
+                        <div class="trait-title">Background</div>
+                        <div class="trait-value" id="trait-background">Bright</div>
+                    </div>
+                    <div class="trait-item">
+                        <div class="trait-title">Eyes</div>
+                        <div class="trait-value" id="trait-eyes">Normal</div>
+                    </div>
+                    <div class="trait-item">
+                        <div class="trait-title">Shirt</div>
+                        <div class="trait-value" id="trait-shirt">Colorful</div>
+                    </div>
+                    <div class="trait-item">
+                        <div class="trait-title">Head</div>
+                        <div class="trait-value" id="trait-head">Normal</div>
+                    </div>
+                    <div class="trait-item">
+                        <div class="trait-title">Accessory</div>
+                        <div class="trait-value" id="trait-accessory">None</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="info-content">
+                <p>Collection: Pudgy Pengu</p>
+                <p>Contract Address: 0x123...abc</p>
+                <p>Token ID: <span id="info-token-id">3463</span></p>
+                <p>Token Standard: ERC-721</p>
+                <p>Blockchain: Ethereum</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-nav">
+                <a href="play.html" class="footer-link">PLAY</a>
+                <span class="footer-separator">|</span>
+                <a href="marketplace.html" class="footer-link">MARKETPLACE</a>
+                <span class="footer-separator">|</span>
+                <a href="museum.html" class="footer-link">MUSEUM</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link">SUPPORT</a>
+            </div>
+    
+            <div class="footer-social">
+                <a href="#" class="social-icon" title="Discord"><i class="fab fa-discord"></i><span class="sr-only">Discord</span></a>
+                <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+                <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pingu Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js"></script>
+    <script src="static/js/product.js"></script>
+</body>
+</html>

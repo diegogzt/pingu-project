@@ -1,0 +1,198 @@
+/* m1.css - Estilos específicos para el modo de 2 cartas por fila */
+
+/* Estilos para el footer cuando el modo m1 está activo */
+body.m1-active footer,
+body.m1-active .footer {
+    padding: 0.3rem !important;
+    margin-top: 2vh !important;
+    height: 35% !important;
+    min-height:35% !important;
+    max-height: 35% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: scale(0.9);
+    z-index: 1;
+}
+
+body.m1-active .footer-container,
+body.m1-active .footer-content {
+    padding: 0 !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    font-size: 0.7em !important;
+}
+
+body.m1-active .footer-bottom {
+    padding: 0.3rem !important;
+    margin: 0 !important;
+}
+
+body.m1-active .footer-nav {
+    font-size: 0.8em !important;
+    line-height: 1.2 !important;
+    padding: 0.5rem 0 !important;
+}
+
+body.m1-active .footer-social {
+    padding: 0.3rem 0 !important;
+}
+
+body.m1-active .footer-link {
+    margin: 0 0.3rem !important;
+}
+
+/* Estilos aplicados cuando el botón m1 está activo */
+body.m1-active .card {
+    /* Tamaño de las cartas - 2 por fila */
+    flex-basis: 48% !important;
+    width: 48% !important;
+    max-width: 48% !important;
+    
+    /* Altura 20% menor */
+    height: 80dvh !important;
+    aspect-ratio: 0.56/1 !important;
+    
+    /* Asegurar que los elementos hijos respeten la distribución de altura */
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Distribución de altura para la imagen y el footer de la carta */
+body.m1-active .card-image {
+    height: 65% !important;
+    min-height: 65% !important;
+    max-height: 65% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+body.m1-active .card-image img.image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+body.m1-active .card-info {
+    
+    overflow: hidden !important;
+    padding: 0.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+/* Ajustar el espacio entre los elementos del footer */
+body.m1-active .card-header {
+    margin-bottom: 0rem !important;
+}
+
+
+body.m1-active .card-number {
+    margin-bottom: 0rem !important;
+}
+
+/* Aumento de fuentes e iconos */
+body.m1-active .card .card-id {
+    font-size: calc(1.5rem) !important; /* Double of 1rem */
+}
+
+body.m1-active .card .card-rarity {
+    font-size: calc(1.5rem) !important; /* Double of 1rem */
+}
+
+body.m1-active .card .card-stats {
+    font-size: calc(1.5rem) !important; /* Double of 1rem */
+}
+
+body.m1-active .card .card-number {
+    font-size: calc(1.5rem) !important; /* Double of 1rem */
+}
+
+body.m1-active .card .buy-btn {
+    font-size: calc(1.5rem) !important; /* Double of 1rem */
+}
+
+
+/* Iconos más grandes */
+body.m1-active .card .heart-icon,
+body.m1-active .card .lightning-icon,
+body.m1-active .card .ghost-icon,
+body.m1-active .card .sword-icon {
+    font-size: calc(1.5em) !important; /* Double the size */
+}
+
+body.m1-active .card .currency-icon {
+    width: calc(2rem) !important; /* Double of 1.3rem */
+    height: calc(2rem) !important; /* Double of 1.3rem */
+}
+
+/* Ajustes de margen y spacing para mayor legibilidad */
+body.m1-active .card-header {
+    height: 20%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+body.m1-active .card-stats {
+    align-items: center;
+    gap: 0vw;
+    margin: 0vh 0;
+    white-space: nowrap;
+    overflow: visible;
+    width: 100%;
+    justify-content: space-between;
+    padding-inline: 1vw;
+}
+
+body.m1-active .card-actions {
+    padding: 1.2vh 1vw !important;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 700px) {
+    body.m1-active .card {
+        flex-basis: 90% !important;
+        width: 90% !important;
+        max-width: 90% !important;
+    }
+        body.m1-active .card-info{
+            height: 35%;
+        }
+        
+}
+
+
+/* Media queries para responsividad */
+
+body.m1-active .card-info{
+    font-size: 20px;
+}
+
+.card-actions,.card-header, .card-stats, .card-number{
+    flex: 1;
+}
+body.m1-active{
+
+    @media (max-width: 690px) {
+        
+        .card-id,
+        .card-rarity,
+        .card-stats,
+        .add-btn,
+        .buy-btn,
+        .card-number,
+        .buy-btn,
+        .add-btn,
+        .price-card,
+        .card-actions,.stat {
+            font-size: 2rem;
+        }
+    }
+    
+}
+
