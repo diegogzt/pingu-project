@@ -3,6 +3,17 @@
     left: 182px;
     z-index: 100 !important; /* Asegurar que está por encima de otros elementos */
     cursor: pointer !important;
+    position: relative;
+}
+
+/* Efecto visual al pasar el cursor */
+.select:hover {
+    background-color: #e0e0e0;
+}
+
+/* Efecto visual al hacer clic */
+.select:active {
+    background-color: #d0d0d0;
 }
 
 .select-text {
@@ -11,5 +22,20 @@
     color: #333;
     text-align: center;
     padding-top: 2px;
-    pointer-events: none; /* Permite que los clics pasen al elemento padre */
+    pointer-events: auto; /* Permitir que reciba eventos de clic */
+    cursor: pointer;
+    content: 'SELECT';
 } 
+
+/* Añadir contenido visible al botón Select */
+.select::after {
+    content: 'SELECT';
+    position: absolute;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    color: #333;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}

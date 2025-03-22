@@ -38,7 +38,7 @@ body {
 }
 
 .gameboy {
-    margin-top: 82dvh;
+    margin-top: 90dvh;
     position: relative;
     height: 1080px;
     width: 660px;
@@ -1242,14 +1242,9 @@ body {
     opacity: 0;
 }
 .nft-menu-content{
-    justify-content: space-between;
     width: 100dvw;
-    padding-inline: 30px;
 }
 
-.marketplace-container{
-    overflow-y: scroll;
-}
 
 
 
@@ -1276,14 +1271,6 @@ body {
     }
 }
 
-@media (max-width: 1200px) {
-
-    .card{
-            flex: 0 0 50%;
-                width: 50%;
-                max-width: 49%;
-    }
-}
 
 .img-screeen{
     width: 80%;
@@ -1294,8 +1281,13 @@ body {
 
 @media (max-width: 900px){
     .gameboy{
-        margin-top: 100dvh;
+        margin-top: 90dvh;
     }
     
 }
 
+
+.footer{
+    position: relative;
+    z-index: 0;
+}

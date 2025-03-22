@@ -1,19 +1,53 @@
 // JavaScript para la página de juego
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM completamente cargado - Inicializando...');
     // Función para ajustar el tamaño del GameBoy según el ancho de la pantalla
     function adjustGameboySize() {
         const gameboy = document.querySelector('.gameboy');
         if (!gameboy) return;
-        
-        // Verificar si la pantalla es menor a 900px
-        if (window.innerWidth < 900) {
-            // Hacer el GameBoy un 20% más pequeño (scale 0.4 en lugar de 0.5)
+
+        // Verificar el tamaño de pantalla - corregido el orden de las condiciones
+        if (window.innerWidth < 440) {
+            // Para pantallas muy pequeñas
             gameboy.style.transform = 'scale(0.4)';
+            gameboy.style.marginTop = '90dvh';
+        } else if (window.innerWidth < 600) {
+            // Para pantallas pequeñas
+            gameboy.style.transform = 'scale(0.4)';
+            gameboy.style.marginTop = '90dvh';
+        } else if (window.innerWidth < 900) {
+            // Para pantallas medianas
+            gameboy.style.transform = 'scale(0.45)';
+            gameboy.style.marginTop = '90dvh';
         } else {
-            // Restaurar el tamaño original
+            // Para pantallas grandes (tamaño original)
             gameboy.style.transform = 'scale(0.5)';
+            gameboy.style.marginTop = '80dvh';
         }
     }
+
+    // Es recomendable llamar a esta función cuando la ventana cambia de tamaño
+    window.addEventListener('resize', adjustGameboySize);
+    // Y también al cargar la página
+    document.addEventListener('DOMContentLoaded', adjustGameboySize);
+    // Función para ajustar la altura de las tarjetas basada en su ancho
+    function ajustarAlturaCards() {
+
+        // Seleccionar todas las tarjetas
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            // Obtener el ancho actual de la tarjeta
+            const cardWidth = card.offsetWidth;
+
+            // Calcular la altura (ancho + 30% del ancho)
+            const cardHeight = cardWidth + (cardWidth * 0.6);
+
+            // Aplicar la altura calculada
+            card.style.height = `${cardHeight}px`;
+        });
+    }
+    ajustarAlturaCards();
     
     // Ajustar el tamaño al cargar la página
     adjustGameboySize();
@@ -34,6 +68,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameboy = document.querySelector('.gameboy');
     const powerButton = document.querySelector('.power-button');
     const nftMenu = document.getElementById('nft-menu');
+    
+    // Verificar que todos los elementos críticos existan
+    const elementosEsenciales = {
+        btnSelect: btnSelect,
+        nftMenu: nftMenu,
+        gameboy: gameboy,
+        gameText: gameText
+    };
+    
+    // Comprobar cada elemento esencial
+    Object.entries(elementosEsenciales).forEach(([nombre, elemento]) => {
+        if (!elemento) {
+            console.error(`Error crítico: No se encontró el elemento ${nombre}`);
+        } else {
+            console.log(`Elemento ${nombre} encontrado correctamente`);
+        }
+    });
     
     // Depuración: Verificar referencias a elementos
     console.log('Elementos DOM:', {
@@ -91,6 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
         isNFTMenuOpen = true;
         // Primero hacemos visible el menú
         nftMenu.style.display = 'flex';
+        // Guardar la posición actual del scroll
+        const scrollY = window.scrollY;
+        // Bloquear scroll en el body de forma más efectiva
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+        document.body.style.overflow = 'hidden';
         // Añadimos un pequeño retraso para que la transición funcione
         setTimeout(() => {
             nftMenu.classList.add('active');
@@ -104,6 +162,14 @@ document.addEventListener('DOMContentLoaded', function() {
         isNFTMenuOpen = false;
         // Primero quitamos la clase active para iniciar la transición
         nftMenu.classList.remove('active');
+        // Restaurar scroll del body de forma más efectiva
+        const scrollY = parseInt(document.body.style.top || '0') * -1;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        // Restaurar la posición del scroll donde estaba
+        window.scrollTo(0, scrollY);
         // Después de la transición, ocultamos completamente el menú
         setTimeout(() => {
             nftMenu.style.display = 'none';
@@ -124,10 +190,40 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // El botón Select abre el menú NFT exactamente como el botón de prueba
-    btnSelect.addEventListener('click', function() {
-        console.log('Botón Select presionado');
-        openNFTMenu();
-    });
+    if (btnSelect) {
+        console.log('Configurando event listener para botón Select');
+        
+        // Aplicar estilo para asegurar que sea clickeable
+        btnSelect.style.cursor = 'pointer';
+        
+        // Agregar evento de clic al botón Select y a su hijo
+        btnSelect.addEventListener('click', function(e) {
+            console.log('Botón Select presionado');
+            e.stopPropagation(); // Evitar propagación
+            if (typeof openNFTMenu === 'function') {
+                openNFTMenu();
+            } else {
+                console.error('Error: La función openNFTMenu no está definida');
+            }
+        });
+        
+        // También agregar evento al elemento hijo select-text si existe
+        const selectText = btnSelect.querySelector('.select-text');
+        if (selectText) {
+            selectText.style.cursor = 'pointer';
+            selectText.addEventListener('click', function(e) {
+                console.log('Texto del botón Select presionado');
+                e.stopPropagation(); // Evitar propagación
+                if (typeof openNFTMenu === 'function') {
+                    openNFTMenu();
+                } else {
+                    console.error('Error: La función openNFTMenu no está definida');
+                }
+            });
+        }
+    } else {
+        console.error('Error: No se pudo encontrar el botón Select');
+    }
     
     // Botones sin funcionalidad real (solo muestran texto)
     btnStart.addEventListener('click', function() {
@@ -187,14 +283,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Manejador de eventos del documento para clic en Select
+    // Manejador de eventos alternativo para el botón Select
+    // Esto es un respaldo en caso de que el listener directo falle
     document.addEventListener('click', function(event) {
         // Verificar si el clic fue en el botón Select o en uno de sus elementos hijos
         let target = event.target;
         while (target != null) {
-            if (target.id === 'btn-select') {
+            if (target.id === 'btn-select' || 
+                (target.classList && target.classList.contains('select-button')) ||
+                (target.parentElement && target.parentElement.id === 'btn-select')) {
                 console.log('Clic detectado en el botón Select desde el documento');
-                openNFTMenu();
+                if (typeof openNFTMenu === 'function') {
+                    openNFTMenu();
+                } else {
+                    console.error('La función openNFTMenu no está definida');
+                }
                 break;
             }
             target = target.parentElement;
